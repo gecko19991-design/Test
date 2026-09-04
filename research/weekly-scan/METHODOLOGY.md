@@ -100,7 +100,7 @@ Extensión objetivo: 150-250 líneas. Más no aporta; menos suele significar que
 ---
 
 ## Parte E: entrega
-1. Crear o actualizar la rama `research/weekly-scan` (partir de la más reciente en remoto si existe; si no, de la rama por defecto; si el repo no tiene rama por defecto, crearla huérfana con el informe).
+1. Crear o actualizar la rama `research/weekly-scan`: si ya existe en remoto, partir de ella; si no, partir de `claude/cfd-short-research-ogxhpm` (que contiene esta metodología y el informe inicial de septiembre de 2026).
 2. Añadir el informe, hacer commit con mensaje `Weekly scan YYYY-MM-DD: <3 tickers short> / <tickers long>` y push con `git push -u origin research/weekly-scan`.
 3. Si existe rama por defecto en el repo, abrir o actualizar un PR en borrador contra ella titulado `Weekly short/long scan YYYY-MM-DD`. Si ya hay un PR abierto de esa rama, no crear otro.
 4. Terminar con un resumen de 10 líneas en el chat: los tickers, la puntuación y el enlace al archivo.
