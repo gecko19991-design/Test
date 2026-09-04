@@ -1,0 +1,862 @@
+{
+  "meta": {
+    "date": "2026-09-04",
+    "week": 36,
+    "model": "claude-opus-5",
+    "previous_report": null,
+    "legal": "Investigación con datos públicos. No es asesoramiento financiero ni una recomendación personalizada. Los CFD son productos apalancados; entre el 74 % y el 89 % de las cuentas minoristas pierden dinero.",
+    "generated_at": "2026-09-04T09:32"
+  },
+  "summary": {
+    "headline": "Volkswagen, Nike y Campbell's combinan deterioro verificable con short interest bajo o moderado y sin accionista rescatador; Charter y Whirlpool caen del podio por riesgo de squeeze y por la naturaleza real de su recorte de guía.",
+    "change_vs_previous": "No hay informe semanal anterior: la comparación se hace contra el informe base research/cfd-short-candidates-2026-09.md, de la misma fecha. El cambio principal es que Charter pierde la categoría de riesgo bajo-medio al confirmarse un 20,4 % del float en corto (el valor más shorteado del S&P 500 según S3 Partners) y que Whirlpool se degrada porque su recorte de guía respondió al gasto financiero, no a la operativa, y la acción llegó a subir un 17,5 % tras anunciarlo.",
+    "lines": [
+      "Shorts elegidos: Volkswagen (VOW3) 4,25, Nike (NKE) 4,05 y Campbell's (CPB) 3,95 sobre 5, entre siete candidatas puntuadas.",
+      "Volkswagen suma un flujo vendedor mecánico con fecha: sale del Euro Stoxx 50 el 21 de septiembre tras 28 años, con más de 28.000 M€ solo en ETF referenciados al índice.",
+      "Campbell's entra esta semana: el 3 de septiembre rebajó la guía FY27 (ventas -2 % a -4 %, BPA -17 % a -24 %) y recortó el dividendo un 36 % con deuda neta en 4,3x EBITDA.",
+      "Nike cotiza en mínimos de 12 años a 39,09 $ con el octavo trimestre consecutivo de caída en China y 3,15 puntos de margen bruto perdidos por aranceles.",
+      "Longs incipientes: Centrus Energy (LEU) y SEALSQ (LAES) cumplen las señales de B2 con holgura; Ondas (ONDS) entra al límite, con +198,2 % a doce meses frente al umbral de descarte del 200 %."
+    ]
+  },
+  "shorts": {
+    "candidates": [
+      {
+        "ticker": "VOW3",
+        "name": "Volkswagen",
+        "market": "XETRA",
+        "price": "~74 €",
+        "scores": {
+          "deterioro": 4,
+          "sector": 4,
+          "squeeze": 5,
+          "rescatador": 5,
+          "coste": 2
+        },
+        "selected": true,
+        "short_interest": "~0,01 % del float (ADR VWAGY)",
+        "days_to_cover": null
+      },
+      {
+        "ticker": "NKE",
+        "name": "NIKE",
+        "market": "NYSE",
+        "price": "39,09 $",
+        "scores": {
+          "deterioro": 4,
+          "sector": 4,
+          "squeeze": 4,
+          "rescatador": 5,
+          "coste": 2
+        },
+        "selected": true,
+        "short_interest": "sin dato",
+        "days_to_cover": null
+      },
+      {
+        "ticker": "CPB",
+        "name": "The Campbell's Company",
+        "market": "NASDAQ",
+        "price": "sin dato",
+        "scores": {
+          "deterioro": 4,
+          "sector": 5,
+          "squeeze": 3,
+          "rescatador": 4,
+          "coste": 3
+        },
+        "selected": true,
+        "short_interest": "14,30 % de las acciones en circulación",
+        "days_to_cover": null
+      },
+      {
+        "ticker": "CHTR",
+        "name": "Charter Communications",
+        "market": "NASDAQ",
+        "price": "sin dato",
+        "scores": {
+          "deterioro": 4,
+          "sector": 5,
+          "squeeze": 1,
+          "rescatador": 4,
+          "coste": 4
+        },
+        "selected": false,
+        "discard_reason": "20,4 % del float en corto según S3 Partners, el valor más shorteado del S&P 500; otras fuentes llegan al 26,11 %",
+        "short_interest": "20,4 % del float (hasta 26,11 % según la fuente)",
+        "days_to_cover": null
+      },
+      {
+        "ticker": "WHR",
+        "name": "Whirlpool",
+        "market": "NYSE",
+        "price": "sin dato",
+        "scores": {
+          "deterioro": 3,
+          "sector": 4,
+          "squeeze": 3,
+          "rescatador": 5,
+          "coste": 5
+        },
+        "selected": false,
+        "discard_reason": "El recorte a 2,50-3,00 $ vino del gasto financiero (de 300 a 350 M$), no de la operativa, que la compañía reafirmó; la acción llegó a subir un 17,5 % tras anunciarlo",
+        "short_interest": "15,3 % (8,24 M de acciones, -27,6 % entre el 31 de julio y el 15 de agosto)",
+        "days_to_cover": null
+      },
+      {
+        "ticker": "ONON",
+        "name": "On Holding",
+        "market": "NYSE",
+        "price": "sin dato",
+        "scores": {
+          "deterioro": 2,
+          "sector": 4,
+          "squeeze": 5,
+          "rescatador": 4,
+          "coste": 5
+        },
+        "selected": false,
+        "discard_reason": "Deterioro solo relativo: recorta la guía pero sigue creciendo en el entorno del 20 % bajo, con DTC +26,0 % y beneficio de 490 M$",
+        "short_interest": "5,93 % de las acciones en circulación",
+        "days_to_cover": null
+      },
+      {
+        "ticker": "KHC",
+        "name": "Kraft Heinz",
+        "market": "NASDAQ",
+        "price": "sin dato",
+        "scores": {
+          "deterioro": 2,
+          "sector": 5,
+          "squeeze": 5,
+          "rescatador": 3,
+          "coste": 1
+        },
+        "selected": false,
+        "discard_reason": "Batió en el Q2 y elevó la guía de ventas orgánicas a -0,5 %/-2,0 % desde -1,5 %/-3,5 %; apalancamiento en 3,0x y dividendo alto que pagaría el corto",
+        "short_interest": "sin dato",
+        "days_to_cover": null
+      }
+    ],
+    "selected": [
+      {
+        "ticker": "VOW3",
+        "name": "Volkswagen",
+        "market": "XETRA",
+        "price": "~74 €",
+        "price_date": "2026-09-02",
+        "short_interest": "~0,01 % del float (ADR VWAGY)",
+        "signals": [
+          {
+            "text": "Expulsión del Euro Stoxx 50 confirmada por ISS Stoxx, efectiva antes de la apertura del 21 de septiembre: primera vez en los 28 años del índice. Entran Nokia y Engie",
+            "value": "21 sep 2026",
+            "source": {
+              "title": "MarketScreener",
+              "url": "https://www.marketscreener.com/news/index-monitor-aftermath-of-the-crisis-volkswagen-vw-must-leave-the-eurostoxx-50-ce7858d2db8af327"
+            }
+          },
+          {
+            "text": "Activos en ETF referenciados al Euro Stoxx 50 que deben deshacer la posición, más mandatos institucionales adicionales",
+            "value": "> 28.000 M€",
+            "source": {
+              "title": "ad-hoc-news",
+              "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-faces-a-double-squeeze-index-expulsion-meets-a-boardroom-showdown/70048691"
+            }
+          },
+          {
+            "text": "Entregas del grupo hasta 4,1 millones de vehículos, con China como principal lastre (-26 % en el segundo trimestre)",
+            "value": "-6,3 %",
+            "source": {
+              "title": "ad-hoc-news",
+              "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-faces-a-double-squeeze-index-expulsion-meets-a-boardroom-showdown/70048691"
+            }
+          },
+          {
+            "text": "Plan sobre la mesa del consejo de vigilancia para cerrar cuatro plantas alemanas: Emden y Zwickau en 2031, Hannover en 2032 y Audi Neckarsulm en 2034",
+            "value": "4 plantas",
+            "source": {
+              "title": "ad-hoc-news",
+              "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-s-double-bind-index-expulsion-lands-as-boardroom-braces-for/70050060"
+            }
+          },
+          {
+            "text": "Discrepancia de fuentes en el beneficio operativo: ad-hoc-news cita 3.600 M€ (+4,5 %) mientras el informe base recoge 5.931 M€ (-11,6 %) en el semestre. Probable diferencia de perímetro; no se elige cifra",
+            "value": "discrepancia",
+            "source": {
+              "title": "Investing.com",
+              "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-volkswagen-group-posts-h1-2026-profit-miss-93CH-4810854"
+            }
+          }
+        ],
+        "sector_news": {
+          "text": "El consejo de vigilancia vota el cierre de plantas alemanas en la misma semana del cambio de índice, con hasta 50.000 empleos afectados: el sector auto alemán sigue en fase de reconocimiento del ajuste, no de recuperación.",
+          "source": {
+            "title": "CNBC",
+            "url": "https://www.cnbc.com/2026/07/02/volkswagen-vw-job-cuts-germany-autos.html"
+          }
+        },
+        "risks": [
+          "El evento de índice está anunciado y puede estar descontado: el flujo vendedor se agota el 21 de septiembre y suele haber rebote técnico después",
+          "El dividendo sigue vigente y en un CFD corto lo paga el operador",
+          "Porsche SE y Baja Sajonia controlan el capital: no hay OPA posible, pero tampoco un activista que acelere el ajuste",
+          "Un acuerdo laboral sin conflicto o una noticia favorable de aranceles o de China revaloriza rápido"
+        ],
+        "catalyst": {
+          "date": "2026-09-21",
+          "text": "Efectividad del cambio en el Euro Stoxx 50 (salen VW y Wolters Kluwer, entran Nokia y Engie); antes, el voto del consejo de vigilancia sobre los cierres"
+        },
+        "verdict": "Mejor relación deterioro/riesgo de la lista: el short interest es prácticamente inexistente y hay un flujo vendedor mecánico con fecha conocida.",
+        "scores": {
+          "deterioro": 4,
+          "sector": 4,
+          "squeeze": 5,
+          "rescatador": 5,
+          "coste": 2
+        }
+      },
+      {
+        "ticker": "NKE",
+        "name": "NIKE",
+        "market": "NYSE",
+        "price": "39,09 $",
+        "price_date": "2026-09-01",
+        "short_interest": "sin dato",
+        "signals": [
+          {
+            "text": "Ingresos de Gran China en el ejercicio 2026 (12,6 % del total), -13,0 % a divisa constante y octavo trimestre consecutivo de caída",
+            "value": "5.900 M$ (-11,0 %)",
+            "source": {
+              "title": "Sporting Goods Intelligence",
+              "url": "https://www.sgieurope.com/financing/nike-stock-hits-12-year-low-after-q3-results/120425.article"
+            }
+          },
+          {
+            "text": "Guía de caída en China para el trimestre en curso mientras reduce sell-in y sigue la limpieza del canal mayorista",
+            "value": "~-20 %",
+            "source": {
+              "title": "Sporting Goods Intelligence",
+              "url": "https://www.sgieurope.com/financing/nike-stock-hits-12-year-low-after-q3-results/120425.article"
+            }
+          },
+          {
+            "text": "Caída del margen bruto guiada, con 3,15 puntos de impacto por aranceles (300 puntos básicos solo en Norteamérica por el arancel base global del 10 %)",
+            "value": "-1,75 a -2,25 pp",
+            "source": {
+              "title": "TradingKey",
+              "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/261746593-nike-china-sales-tariffs-supply-chain-anta-dtc-inventory-tradingkey"
+            }
+          },
+          {
+            "text": "Cotización en mínimos de 12 años, un 78 % por debajo del máximo de noviembre de 2021. Discrepancia: otra fuente cita 38,07 $ y lo describe como mínimo de más de veinte años",
+            "value": "39,09 $",
+            "source": {
+              "title": "Startup Fortune",
+              "url": "https://startupfortune.com/nike-stock-hits-a-12-year-low-as-china-sales-keep-sliding/"
+            }
+          },
+          {
+            "text": "Short interest y días para cubrir: sin dato verificado en esta ejecución. Por eso la nota de squeeze se fija en 4 y no en 5, pese al tamaño del float",
+            "value": "sin dato",
+            "source": {
+              "title": "Finviz",
+              "url": "https://finviz.com/quote?t=NKE&ty=si"
+            }
+          }
+        ],
+        "sector_news": {
+          "text": "El calzado deportivo entero se desacelera: On Holding recortó la guía 2026 del \"al menos 23 %\" al entorno del 20 % bajo y se desplomó más del 19 % en una sesión, su peor día desde la salida a bolsa de 2021, por el frenazo del canal mayorista.",
+          "source": {
+            "title": "TradingView / Stocktwits",
+            "url": "https://www.tradingview.com/news/stocktwits:f9ca57bb5094b:0-onon-stock-plunges-to-2-year-lows-in-record-single-day-crash-after-guidance-cut-revenue-miss/"
+          }
+        },
+        "risks": [
+          "Ya está en mínimos de 12 años: el sesgo de un valor muy sobrevendido es asimétrico al alza",
+          "Paga 0,41 $ de dividendo trimestral (registro el 1 de septiembre, pago el 1 de octubre), coste directo para el CFD corto",
+          "Los resultados del 1 de octubre son un evento binario: cualquier señal de estabilización en China dispara un rebote violento",
+          "Mega-cap con cobertura masiva: poco deterioro que el mercado no conozca ya"
+        ],
+        "catalyst": {
+          "date": "2026-10-01",
+          "text": "Resultados del primer trimestre fiscal 2027 tras el cierre del mercado, el mismo día del pago del dividendo"
+        },
+        "verdict": "Deterioro estructural claro en el mercado que más importaba y riesgo de squeeze mínimo por tamaño, pero el punto de entrada es peor que en Volkswagen porque el precio ya recoge mucho.",
+        "scores": {
+          "deterioro": 4,
+          "sector": 4,
+          "squeeze": 4,
+          "rescatador": 5,
+          "coste": 2
+        }
+      },
+      {
+        "ticker": "CPB",
+        "name": "The Campbell's Company",
+        "market": "NASDAQ",
+        "price": "sin dato",
+        "price_date": "2026-09-03",
+        "short_interest": "14,30 % de las acciones en circulación (42,63 M de acciones)",
+        "signals": [
+          {
+            "text": "Guía FY27 de ventas netas y orgánicas frente a un consenso de ~-0,8 %",
+            "value": "-2 % a -4 %",
+            "source": {
+              "title": "The Stock Observer",
+              "url": "https://www.thestockobserver.com/2026/09/03/campbells-nasdaqcpb-updates-fy-2027-earnings-guidance.html"
+            }
+          },
+          {
+            "text": "Guía de BPA ajustado FY27 de 1,65-1,80 $ frente a un consenso de ~1,83-1,86 $, con EBIT ajustado guiado a caer entre el 7 % y el 12 %",
+            "value": "-17 % a -24 %",
+            "source": {
+              "title": "Investing.com",
+              "url": "https://www.investing.com/news/company-news/campbells-q4-fy26-slides-sales-miss-margins-shrink-dividend-cut-93CH-4887635"
+            }
+          },
+          {
+            "text": "Recorte del dividendo trimestral a 0,25 $ desde los 1,56 $ anualizados anteriores, para acelerar la reducción de deuda",
+            "value": "-36 %",
+            "source": {
+              "title": "Proactive Investors",
+              "url": "https://www.proactiveinvestors.com/companies/news/1098066/campbell-s-cuts-dividend-unveils-500m-cost-plan-after-profit-slide-1098066.html"
+            }
+          },
+          {
+            "text": "Apalancamiento de deuda neta sobre EBITDA, con objetivo de bajar a ~3x: supera el umbral de 4x de la metodología",
+            "value": "4,3x",
+            "source": {
+              "title": "Investing.com",
+              "url": "https://www.investing.com/news/company-news/campbells-q4-fy26-slides-sales-miss-margins-shrink-dividend-cut-93CH-4887635"
+            }
+          },
+          {
+            "text": "Q4 FY26: ventas netas de 2.100 M$ frente a 2.150 M$ esperados y BPA ajustado de 0,39 $, un 37 % menos que un año antes",
+            "value": "-37 % BPA",
+            "source": {
+              "title": "The Campbell's Company",
+              "url": "https://www.thecampbellscompany.com/newsroom/press-releases/campbells-reports-fourth-quarter-fiscal-2026-results/"
+            }
+          }
+        ],
+        "sector_news": {
+          "text": "La alimentación envasada estadounidense lleva todo el año con volúmenes en -2 % según TD Cowen, con cuota récord de marca blanca, aranceles y uso creciente de GLP-1; de 16 iniciativas de inversión en marca de Campbell's, Conagra, General Mills y Kraft Heinz, solo siete devolvieron la marca al crecimiento.",
+          "source": {
+            "title": "Baking Business",
+            "url": "https://www.bakingbusiness.com/articles/65680-food-industry-outlook-improves-little-for-2026"
+          }
+        },
+        "risks": [
+          "El 14,3 % de short interest ya no es bajo y el plan de 500 M$ de ahorro hasta FY2030 puede generar rebotes",
+          "Los descendientes de la familia Dorrance mantienen históricamente una participación de referencia (porcentaje actual: sin dato): reduce la probabilidad de OPA pero añade un comprador estable",
+          "El sector aparece en listas de valor tras las caídas: riesgo de rebote por rotación",
+          "Sigue pagando 0,25 $ trimestrales, que en un CFD corto paga el operador"
+        ],
+        "catalyst": {
+          "date": "2026-12-09",
+          "text": "Resultados del Q1 FY27 previsibles a principios de diciembre (fecha exacta sin confirmar); antes, posibles revisiones de rating por el apalancamiento de 4,3x"
+        },
+        "verdict": "El deterioro más nítido y más reciente de la semana, con confirmación sectorial de primera categoría; el freno es un short interest ya de dos dígitos.",
+        "scores": {
+          "deterioro": 4,
+          "sector": 5,
+          "squeeze": 3,
+          "rescatador": 4,
+          "coste": 3
+        }
+      }
+    ]
+  },
+  "longs": [
+    {
+      "ticker": "LEU",
+      "name": "Centrus Energy",
+      "market": "NYSE",
+      "market_cap": "~3.500 M$",
+      "trend": "Nuclear avanzada: combustible HALEU para reactores modulares pequeños y desacoplamiento del enriquecimiento ruso",
+      "why_now": "Los contratos de combustible para SMR están cerrándose ahora, antes de que los reactores existan: Centrus ha firmado en el último mes el acuerdo definitivo de enriquecimiento con X-energy y acumula una cartera récord que llega hasta 2040.",
+      "signals": {
+        "small_cap": true,
+        "growth": true,
+        "catalyst": true,
+        "moat": true,
+        "balance": true
+      },
+      "signal_notes": [
+        "Capitalización de ~3.500 M$, muy por debajo del umbral de 15.000 M$; cotizaba a 176,93 $ el 30 de julio de 2026 y acumula -31,1 % en el año, lejos del descarte por +200 %",
+        "Cartera de 4.500 M$ a 30 de junio de 2026 con vencimientos hasta 2040; el segmento LEU aporta ~3.700 M$, de los que 2.400 M$ están bajo acuerdos definitivos. Ingresos del Q2 de 176,1 M$, +14 %",
+        "Contrato definitivo con X-energy para LEU y HALEU del lote inicial de reactores Xe-100 y combustible TRISO-X, firmado en el último mes, sobre el premio previo de 900 M$ del Departamento de Energía",
+        "La American Centrifuge Plant de Piketon (Ohio) es la única instalación estadounidense con licencia para producir HALEU comercial: barrera regulatoria y de capital muy alta",
+        "Beneficio neto ajustado de 38,7 M$ en el Q2 y prepagos de contratos como capital no dilutivo"
+      ],
+      "thesis": "El cuello de botella del despliegue de SMR no son los reactores sino el combustible enriquecido, y hay un único proveedor estadounidense con licencia. La cartera ya está firmada; lo que el mercado aún no paga es la conversión de los 3.000 M$ contingentes en firmes.",
+      "kill_criteria": "Un giro presupuestario que retrase los SMR; el retorno del material enriquecido ruso al mercado occidental; retrasos en el escalado de Piketon; que los contratos contingentes (3.000 M$ de los 3.700 M$) no se conviertan en firmes.",
+      "horizon": "3-5 años",
+      "next_catalyst": {
+        "date": "2026-11-05",
+        "text": "Resultados del Q3 2026: hitos de capacidad de la American Centrifuge Plant y nuevas adjudicaciones del DOE"
+      },
+      "sources": [
+        {
+          "title": "SEC 10-Q Q2 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001065059/000162828026053863/leu-20260630.htm"
+        },
+        {
+          "title": "Cartera récord (Yahoo Finance)",
+          "url": "https://finance.yahoo.com/energy/articles/centrus-energy-corp-leu-q2-231855682.html"
+        },
+        {
+          "title": "Contrato con X-energy (Energies Media)",
+          "url": "https://energiesmedia.com/centrus-xenergy-uranium-enrichment-energies/"
+        },
+        {
+          "title": "La era dorada de la energía nuclear (DOE)",
+          "url": "https://www.energy.gov/articles/fact-sheet-golden-era-american-nuclear-energy-has-arrived"
+        }
+      ]
+    },
+    {
+      "ticker": "LAES",
+      "name": "SEALSQ Corp",
+      "market": "NASDAQ",
+      "market_cap": "525,75 M$",
+      "trend": "Criptografía post-cuántica: migración obligada de infraestructura tras la finalización de los estándares PQC del NIST",
+      "why_now": "Las certificaciones FIPS 140-3 y TCG de su chip post-cuántico QS7001 se cierran entre finales de 2026 y principios de 2027, justo cuando la migración PQC pasa de plan a presupuesto en todos los sectores.",
+      "signals": {
+        "small_cap": true,
+        "growth": true,
+        "catalyst": true,
+        "moat": false,
+        "balance": true
+      },
+      "signal_notes": [
+        "Capitalización de 525,75 M$ con 222,77 millones de acciones a 2,39 $ el 1 de septiembre de 2026; rango de 52 semanas de 2,00 a 8,71 $, es decir cerca del mínimo y lejos del descarte por +200 %",
+        "Ingresos preliminares H1 2026 de ~11 M$, +120 % interanual frente a 5 M$ en H1 2025; guía FY2026 de 27-36 M$, entre +50 % y +100 % sobre los 18,3 M$ auditados de FY2025",
+        "En septiembre de 2026 integró wolfTPM en la plataforma QVault TPM de silicio post-cuántico y actualizó el calendario de certificaciones, con primeros ingresos de QS7001/QVault a final del segundo semestre",
+        "Posición defendible contada como NO cumplida por prudencia: tiene silicio propio certificable y una cartera declarada de más de 225 M$ hasta 2029, pero las certificaciones no están cerradas y el nicho atraerá a los grandes fabricantes de semiconductores seguros",
+        "Caja e inversiones a corto plazo de ~495 M$ a 30 de junio de 2026. ATENCIÓN: esa cifra equivale casi a toda la capitalización (525,75 M$), lo que implica que el mercado no atribuye valor al negocio operativo o que parte de esos activos no es caja líquida; verificar en el 6-K antes de darla por buena"
+      ],
+      "thesis": "La migración post-cuántica es un cambio de silicio, no solo de software, y SEALSQ es de los pocos cotizados pequeños con chip propio en certificación. Cotiza casi a caja neta, de modo que el negocio se paga casi a cero.",
+      "kill_criteria": "Retraso o fallo de la certificación FIPS 140-3/TCG; que la migración PQC se resuelva por software y no por hardware; dilución adicional (la compañía ya ha ampliado capital repetidamente); que la caja declarada no sea íntegramente líquida.",
+      "horizon": "3-5 años",
+      "next_catalyst": {
+        "date": "2026-12-31",
+        "text": "Primeros ingresos de QS7001/QVault a final de 2026 y cierre de las certificaciones FIPS 140-3 y TCG"
+      },
+      "sources": [
+        {
+          "title": "Ingresos preliminares H1 2026 (Investing.com)",
+          "url": "https://www.investing.com/news/company-news/sealsq-reports-preliminary-h1-2026-revenue-of-11-million-93CH-4777388"
+        },
+        {
+          "title": "Calendario de certificación QVault (TipRanks)",
+          "url": "https://www.tipranks.com/news/company-announcements/sealsq-updates-post-quantum-chip-certification-schedule-targets-qvault-revenue-by-end-2026"
+        },
+        {
+          "title": "SEC 6-K",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001951222/000121390026076378/ea029728501ex99-1.htm"
+        },
+        {
+          "title": "Capitalización (StockAnalysis)",
+          "url": "https://stockanalysis.com/stocks/laes/market-cap/"
+        }
+      ]
+    },
+    {
+      "ticker": "ONDS",
+      "name": "Ondas Holdings",
+      "market": "NASDAQ",
+      "market_cap": "4.970 M$ (21 ago) / ~3.700 M$ implícita al precio del 3 de septiembre",
+      "trend": "Defensa europea y sistemas contra-dron tras las lecciones operativas de Ucrania",
+      "why_now": "La European Drone Defence Initiative y los programas nacionales de Francia, Alemania, Polonia, Países Bajos, Italia y España están adjudicando ahora; el gasto público mundial en contra-UAS alcanzó los 29.000 M$ solo en el primer trimestre de 2026.",
+      "signals": {
+        "small_cap": true,
+        "growth": true,
+        "catalyst": true,
+        "moat": true,
+        "balance": true
+      },
+      "signal_notes": [
+        "Capitalización de 4.970 M$ el 21 de agosto de 2026 con 469,06 millones de acciones. DISCREPANCIA: al precio de 7,835 $ del 3 de septiembre la capitalización implícita sería de ~3.700 M$. Se registran ambas",
+        "Ingresos del Q2 2026 de 83,8 M$ frente a 6,3 M$ un año antes (más de 13 veces); cartera pro forma de 757 M$, con 175 M$ de pedidos en el Q2 y otros 105 M$ entrando en el Q3; guía anual elevada de 390 M$ a 525-550 M$",
+        "Catalizador estructural: iniciativa europea de defensa antidron a nivel UE más programas nacionales, con 29.000 M$ de gasto mundial en contra-UAS en el primer trimestre de 2026",
+        "Plataforma Iron Drone Raider ya desplegada con un contratista de defensa europeo para un cliente gubernamental, reforzada con las adquisiciones de DZYNE y Cyber Hawk por ~325 M$",
+        "AVISO SOBRE EL DESCARTE DE B2: la acción acumula +198,2 % en doce meses, justo por debajo del umbral de descarte del 200 %. Formalmente pasa el filtro, pero deja de ser muy incipiente en cuanto al precio; lo que sigue siendo incipiente es la ejecución del pedido, no la valoración"
+      ],
+      "thesis": "La cartera de 757 M$ y la guía de 525-550 M$ implican que la conversión ya está contratada; el riesgo se ha desplazado de conseguir pedidos a ejecutarlos, y con 1.400 M$ de caja y 43,1 % de margen bruto la ejecución está financiada.",
+      "kill_criteria": "Que la cartera de 757 M$ no se convierta en ingresos al ritmo guiado; integración fallida de DZYNE y Cyber Hawk; que el gasto europeo se concentre en campeones nacionales (Rheinmetall, Thales, Leonardo) en vez de en proveedores estadounidenses; dilución adicional.",
+      "horizon": "6-18 meses",
+      "next_catalyst": {
+        "date": "2026-11-05",
+        "text": "Resultados del Q3 2026: prueba de la aceleración del segundo semestre hacia los 525-550 M$ de guía"
+      },
+      "sources": [
+        {
+          "title": "Resultados Q2 2026 (Ondas IR)",
+          "url": "https://ir.ondas.com/press-releases/detail/326/ondas-posts-record-q2-2026-revenue-of-83-8-million-on"
+        },
+        {
+          "title": "8-K con guía elevada (StockTitan)",
+          "url": "https://www.stocktitan.net/sec-filings/ONDS/8-k-ondas-inc-reports-material-event-e33f7c7c7ef0.html"
+        },
+        {
+          "title": "Demanda europea de contra-dron (Capstone DC)",
+          "url": "https://capstonedc.com/insights/national-security-insights/new-threats-drive-european-drone-and-counter-drone-demand/"
+        },
+        {
+          "title": "Rentabilidad a 12 meses (Morningstar)",
+          "url": "https://www.morningstar.com/stocks/xnas/onds/quote"
+        }
+      ]
+    }
+  ],
+  "watchlist": [
+    {
+      "ticker": "QBTS",
+      "name": "D-Wave Quantum",
+      "status": "none",
+      "note": ""
+    },
+    {
+      "ticker": "SNDK",
+      "name": "Sandisk",
+      "status": "news",
+      "note": "Acumula +525 % en 2026 con recompra de 14.000 M$ y Bernstein subiendo el precio objetivo de 1.700 a 3.000 $ por la escasez plurianual de NAND, pero cae un 7 % en cinco sesiones: primera señal de agotamiento en la posición más rentable de la cartera.",
+      "source": {
+        "title": "Forbes",
+        "url": "https://www.forbes.com/sites/investor-hub/article/sandisk-stock-over-574-where-its-heading-2026/"
+      }
+    },
+    {
+      "ticker": "ASML",
+      "name": "ASML",
+      "status": "none",
+      "note": ""
+    },
+    {
+      "ticker": "MCD",
+      "name": "McDonald's",
+      "status": "none",
+      "note": ""
+    },
+    {
+      "ticker": "LMT",
+      "name": "Lockheed Martin",
+      "status": "news",
+      "note": "Dividendo del tercer trimestre de 3,45 $ por acción pagadero el 25 de septiembre; un pedido de misiles a siete años apenas movió la acción, señal de que el mercado ya paga la cartera de defensa.",
+      "source": {
+        "title": "Options Trading Report",
+        "url": "https://www.optionstradingreport.com/2026/09/lockheed-martin-got-a-7-year-missile-order-the-stock-barely-blinked/"
+      }
+    }
+  ],
+  "calendar": [
+    {
+      "date": "2026-09-04",
+      "ticker": "VOW3",
+      "side": "short",
+      "text": "Voto del consejo de vigilancia sobre el cierre de cuatro plantas alemanas"
+    },
+    {
+      "date": "2026-09-08",
+      "ticker": "CPB",
+      "side": "short",
+      "text": "Publicación quincenal de short interest de FINRA (posiciones a 31 de agosto): confirma o desmiente el 14,30 % de CPB"
+    },
+    {
+      "date": "2026-09-11",
+      "ticker": "CHTR",
+      "side": "other",
+      "text": "Seguimiento del short interest de Charter tras la lectura del 20,4 % del float de S3 Partners"
+    },
+    {
+      "date": "2026-09-18",
+      "ticker": "VOW3",
+      "side": "short",
+      "text": "Último día de negociación antes del cambio de índice: pico del flujo vendedor de fondos indexados"
+    },
+    {
+      "date": "2026-09-21",
+      "ticker": "VOW3",
+      "side": "short",
+      "text": "Efectividad del cambio en el Euro Stoxx 50: salen Volkswagen y Wolters Kluwer, entran Nokia y Engie"
+    },
+    {
+      "date": "2026-09-25",
+      "ticker": "LMT",
+      "side": "other",
+      "text": "Pago del dividendo del tercer trimestre de Lockheed Martin (3,45 $)"
+    },
+    {
+      "date": "2026-10-01",
+      "ticker": "NKE",
+      "side": "short",
+      "text": "Resultados del Q1 FY2027 tras el cierre y pago del dividendo de 0,41 $"
+    },
+    {
+      "date": "2026-11-05",
+      "ticker": "LEU",
+      "side": "long",
+      "text": "Resultados del Q3 de Centrus Energy y de Ondas"
+    }
+  ],
+  "sources": [
+    {
+      "group": "Volkswagen (VOW3)",
+      "links": [
+        {
+          "title": "Salida del EuroStoxx 50 (MarketScreener)",
+          "url": "https://www.marketscreener.com/news/index-monitor-aftermath-of-the-crisis-volkswagen-vw-must-leave-the-eurostoxx-50-ce7858d2db8af327"
+        },
+        {
+          "title": "Fin de 28 años en el índice (TechTimes)",
+          "url": "https://www.techtimes.com/articles/326345/20260902/volkswagens-28-year-euro-stoxx-50-tenure-ends-nokia-returns-ai-infrastructure-revenue.htm"
+        },
+        {
+          "title": "Doble presión: índice y consejo (ad-hoc-news)",
+          "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-faces-a-double-squeeze-index-expulsion-meets-a-boardroom-showdown/70048691"
+        },
+        {
+          "title": "Voto sobre cierres de plantas (ad-hoc-news)",
+          "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-s-double-bind-index-expulsion-lands-as-boardroom-braces-for/70050060"
+        },
+        {
+          "title": "Cambios de índice desde el 21 de septiembre (it-boltwise)",
+          "url": "https://www.it-boltwise.de/euro-stoxx-50-vw-und-wolters-kluwer-raus-engie-und-nokia-rein-indexumstellung-ab-21-september.html"
+        },
+        {
+          "title": "Pulso en el consejo por el plan de recortes (CNBC)",
+          "url": "https://www.cnbc.com/2026/07/02/volkswagen-vw-job-cuts-germany-autos.html"
+        },
+        {
+          "title": "Resultados del primer semestre 2026 (Investing.com)",
+          "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-volkswagen-group-posts-h1-2026-profit-miss-93CH-4810854"
+        }
+      ]
+    },
+    {
+      "group": "NIKE (NKE)",
+      "links": [
+        {
+          "title": "Mínimo de 12 años y China (Sporting Goods Intelligence)",
+          "url": "https://www.sgieurope.com/financing/nike-stock-hits-12-year-low-after-q3-results/120425.article"
+        },
+        {
+          "title": "Octavo trimestre de caída en China (Startup Fortune)",
+          "url": "https://startupfortune.com/nike-stock-hits-a-12-year-low-as-china-sales-keep-sliding/"
+        },
+        {
+          "title": "Aranceles, margen e inventario (TradingKey)",
+          "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/261746593-nike-china-sales-tariffs-supply-chain-anta-dtc-inventory-tradingkey"
+        },
+        {
+          "title": "Fecha de resultados del Q1 FY27 (Business Wire)",
+          "url": "https://www.businesswire.com/news/home/20260828161061/en/NIKE-Inc.-Announces-First-Quarter-Fiscal-2027-Earnings-and-Conference-Call"
+        },
+        {
+          "title": "Histórico de dividendos (StockAnalysis)",
+          "url": "https://stockanalysis.com/stocks/nke/dividend/"
+        }
+      ]
+    },
+    {
+      "group": "Campbell's (CPB)",
+      "links": [
+        {
+          "title": "Resultados Q4 FY26 (The Campbell's Company)",
+          "url": "https://www.thecampbellscompany.com/newsroom/press-releases/campbells-reports-fourth-quarter-fiscal-2026-results/"
+        },
+        {
+          "title": "Ventas, márgenes y dividendo (Investing.com)",
+          "url": "https://www.investing.com/news/company-news/campbells-q4-fy26-slides-sales-miss-margins-shrink-dividend-cut-93CH-4887635"
+        },
+        {
+          "title": "Guía FY2027 (The Stock Observer)",
+          "url": "https://www.thestockobserver.com/2026/09/03/campbells-nasdaqcpb-updates-fy-2027-earnings-guidance.html"
+        },
+        {
+          "title": "Recorte de dividendo y plan de 500 M$ (Proactive)",
+          "url": "https://www.proactiveinvestors.com/companies/news/1098066/campbell-s-cuts-dividend-unveils-500m-cost-plan-after-profit-slide-1098066.html"
+        },
+        {
+          "title": "Short interest (Finviz)",
+          "url": "https://finviz.com/quote.ashx?t=CPB&ty=si"
+        }
+      ]
+    },
+    {
+      "group": "Sector alimentación envasada",
+      "links": [
+        {
+          "title": "Perspectivas 2026 del sector (Baking Business)",
+          "url": "https://www.bakingbusiness.com/articles/65680-food-industry-outlook-improves-little-for-2026"
+        },
+        {
+          "title": "Bernstein y los GLP-1 (Bloomberg)",
+          "url": "https://www.bloomberg.com/news/articles/2026-06-05/bernstein-sours-on-packaged-food-stocks-as-inflation-glp-1-bite"
+        },
+        {
+          "title": "Kraft Heinz Q2 2026 y guía elevada (Business Wire)",
+          "url": "https://www.businesswire.com/news/home/20260805074009/en/Kraft-Heinz-Reports-Second-Quarter-2026-Results-Updates-2026-Full-Year-Outlook"
+        }
+      ]
+    },
+    {
+      "group": "Charter y sector cable (degradada)",
+      "links": [
+        {
+          "title": "El valor más shorteado del S&P 500 (S3 Partners)",
+          "url": "https://www.s3partners.com/articles/chtr-highest-debt-and-short-interest-squeeze"
+        },
+        {
+          "title": "Short interest y coste de préstamo (Fintel)",
+          "url": "https://fintel.io/ss/us/chtr"
+        },
+        {
+          "title": "Cierre de la fusión con Cox (Yahoo Finance)",
+          "url": "https://finance.yahoo.com/media-advertising/articles/charter-closes-34-5-billion-181437217.html"
+        },
+        {
+          "title": "New Street: el cable no crece antes de 2030 (Broadband Breakfast)",
+          "url": "https://broadbandbreakfast.com/cable-unlikely-to-grow-subscribers-this-decade-new-street/"
+        }
+      ]
+    },
+    {
+      "group": "Whirlpool y On Holding (degradadas)",
+      "links": [
+        {
+          "title": "8-K con el recorte de guía (StockTitan)",
+          "url": "https://www.stocktitan.net/sec-filings/WHR/8-k-whirlpool-corp-de-reports-material-event-452ca94fab25.html"
+        },
+        {
+          "title": "La acción sube 17,5 % tras el recorte (Simply Wall St)",
+          "url": "https://simplywall.st/stocks/us/consumer-durables/nyse-whr/whirlpool/news/why-whirlpool-whr-is-up-175-after-cutting-2026-outlook-and-d"
+        },
+        {
+          "title": "Peor sesión de ONON desde su salida a bolsa (TradingView)",
+          "url": "https://www.tradingview.com/news/stocktwits:f9ca57bb5094b:0-onon-stock-plunges-to-2-year-lows-in-record-single-day-crash-after-guidance-cut-revenue-miss/"
+        },
+        {
+          "title": "Estadísticas y short interest de ONON (StockAnalysis)",
+          "url": "https://stockanalysis.com/stocks/onon/statistics/"
+        }
+      ]
+    },
+    {
+      "group": "Centrus Energy (LEU)",
+      "links": [
+        {
+          "title": "SEC 10-Q Q2 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001065059/000162828026053863/leu-20260630.htm"
+        },
+        {
+          "title": "Cartera récord de 4.500 M$ (Yahoo Finance)",
+          "url": "https://finance.yahoo.com/energy/articles/centrus-energy-corp-leu-q2-231855682.html"
+        },
+        {
+          "title": "Contrato con X-energy (Energies Media)",
+          "url": "https://energiesmedia.com/centrus-xenergy-uranium-enrichment-energies/"
+        },
+        {
+          "title": "La era dorada de la energía nuclear (DOE)",
+          "url": "https://www.energy.gov/articles/fact-sheet-golden-era-american-nuclear-energy-has-arrived"
+        },
+        {
+          "title": "Precio y capitalización (StockAnalysis)",
+          "url": "https://stockanalysis.com/stocks/leu/"
+        }
+      ]
+    },
+    {
+      "group": "SEALSQ (LAES)",
+      "links": [
+        {
+          "title": "Ingresos preliminares H1 2026 (Investing.com)",
+          "url": "https://www.investing.com/news/company-news/sealsq-reports-preliminary-h1-2026-revenue-of-11-million-93CH-4777388"
+        },
+        {
+          "title": "Resultados FY2025 y guía FY2026 (GlobeNewswire)",
+          "url": "https://www.globenewswire.com/news-release/2026/03/31/3266003/0/en/sealsq-announces-fy-2025-audited-financial-results-reaffirms-q1-2026-expectations-fy-2026-guidance-updates-on-partnerships-and-qs7001-certification-go-to-market-execution.html"
+        },
+        {
+          "title": "Calendario de certificación QVault (TipRanks)",
+          "url": "https://www.tipranks.com/news/company-announcements/sealsq-updates-post-quantum-chip-certification-schedule-targets-qvault-revenue-by-end-2026"
+        },
+        {
+          "title": "SEC 6-K",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001951222/000121390026076378/ea029728501ex99-1.htm"
+        },
+        {
+          "title": "Empresas de criptografía cuántica (The Quantum Insider)",
+          "url": "https://thequantuminsider.com/2026/03/25/25-companies-building-the-quantum-cryptography-communications-markets/"
+        }
+      ]
+    },
+    {
+      "group": "Ondas (ONDS)",
+      "links": [
+        {
+          "title": "Resultados Q2 2026 (Ondas IR)",
+          "url": "https://ir.ondas.com/press-releases/detail/326/ondas-posts-record-q2-2026-revenue-of-83-8-million-on"
+        },
+        {
+          "title": "8-K con guía elevada (StockTitan)",
+          "url": "https://www.stocktitan.net/sec-filings/ONDS/8-k-ondas-inc-reports-material-event-e33f7c7c7ef0.html"
+        },
+        {
+          "title": "Pedido de Iron Drone Raider en Europa (Barchart)",
+          "url": "https://www.barchart.com/story/news/32083158/ondas-secures-3-4-million-order-for-iron-drone-raider-counter-uas-system-from-renowned-european-defense-contractor-for-government-client"
+        },
+        {
+          "title": "Capitalización y acciones (CompaniesMarketCap)",
+          "url": "https://companiesmarketcap.com/ondas-holdings/marketcap/"
+        },
+        {
+          "title": "Rentabilidad a 12 meses (Morningstar)",
+          "url": "https://www.morningstar.com/stocks/xnas/onds/quote"
+        },
+        {
+          "title": "29.000 M$ de gasto en contra-UAS (Unmanned Airspace)",
+          "url": "https://www.unmannedairspace.info/counter-uas-systems-and-policies/global-government-spending-on-c-uas-reaches-usd29-billion-in-first-months-of-2026/"
+        }
+      ]
+    },
+    {
+      "group": "Longs evaluados y rechazados",
+      "links": [
+        {
+          "title": "Evolution Metals: 452 M$ de pérdida semestral con 1,6 M$ de ingresos (StockTitan)",
+          "url": "https://www.stocktitan.net/news/EMAT/evolution-metals-technologies-reports-second-quarter-2026-financial-bjnt0ue9s0cc.html"
+        },
+        {
+          "title": "Evolution Metals 8-K: expansión de capacidad de imanes (SEC)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001866226/000121390026087062/ea030134701ex99-1.htm"
+        }
+      ]
+    },
+    {
+      "group": "Vigilancia de posiciones",
+      "links": [
+        {
+          "title": "D-Wave y la prudencia con el hype cuántico (Seeking Alpha)",
+          "url": "https://seekingalpha.com/article/4926539-d-wave-quantum-tread-lightly-on-quantum-hype"
+        },
+        {
+          "title": "Sandisk: recorrido y perspectivas (Forbes)",
+          "url": "https://www.forbes.com/sites/investor-hub/article/sandisk-stock-over-574-where-its-heading-2026/"
+        },
+        {
+          "title": "ASML advierte sobre sus objetivos de 2026 (iTiger)",
+          "url": "https://www.itiger.com/news/1130044960"
+        },
+        {
+          "title": "McDonald's Q2 2026 (CNBC)",
+          "url": "https://www.cnbc.com/2026/08/04/mcdonalds-mcd-q2-2026-earnings.html"
+        },
+        {
+          "title": "Pedido de misiles a 7 años de LMT (Options Trading Report)",
+          "url": "https://www.optionstradingreport.com/2026/09/lockheed-martin-got-a-7-year-missile-order-the-stock-barely-blinked/"
+        }
+      ]
+    }
+  ]
+}

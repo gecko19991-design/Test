@@ -1,0 +1,478 @@
+<title>Radar Semanal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#f6f7f9; --surface:#ffffff; --surface-2:#eef1f5;
+  --ink:#171b22; --ink-2:#4d5666; --muted:#7c8595; --line:#dfe3ea; --line-strong:#c9cfd9;
+  --accent:#1c5cab; --accent-soft:#e4eefb;
+  --short:#c8393a; --short-mark:#e34948; --short-soft:#fbeeed;
+  --long:#0b7f5a; --long-mark:#1baf7a; --long-soft:#e6f6ef;
+  --c1:#2a78d6; --c2:#eb6834; --c3:#1baf7a; --c4:#eda100; --c5:#e87ba4;
+  --shadow:0 1px 2px rgba(23,27,34,.06),0 8px 24px -12px rgba(23,27,34,.18);
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#121519; --surface:#1a1f27; --surface-2:#222933;
+    --ink:#edf0f4; --ink-2:#b4bcc8; --muted:#7f8896; --line:#2b323d; --line-strong:#3a4350;
+    --accent:#6da7ec; --accent-soft:#1d2c42;
+    --short:#ee7a7a; --short-mark:#e66767; --short-soft:#33201f;
+    --long:#3fcf99; --long-mark:#199e70; --long-soft:#16302a;
+    --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#121519; --surface:#1a1f27; --surface-2:#222933;
+  --ink:#edf0f4; --ink-2:#b4bcc8; --muted:#7f8896; --line:#2b323d; --line-strong:#3a4350;
+  --accent:#6da7ec; --accent-soft:#1d2c42;
+  --short:#ee7a7a; --short-mark:#e66767; --short-soft:#33201f;
+  --long:#3fcf99; --long-mark:#199e70; --long-soft:#16302a;
+  --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-bottom-color:currentColor}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--display);font-weight:500;text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:44px;letter-spacing:-.01em}
+h2{font-size:26px}
+h3{font-size:20px}
+p{margin:0}
+
+/* header */
+.masthead{padding:40px 0 22px;border-bottom:1px solid var(--line)}
+.masthead-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.masthead .eyebrow{margin-bottom:10px}
+.masthead .sub{color:var(--ink-2);max-width:62ch;margin-top:10px;font-size:15.5px}
+.tools{display:flex;gap:8px;align-items:center}
+.btn{font:inherit;font-size:13px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line-strong);border-radius:6px;padding:7px 11px;cursor:pointer}
+.btn:hover{color:var(--ink);border-color:var(--ink-2)}
+.search{font:inherit;font-size:13px;font-family:var(--mono);color:var(--ink);background:var(--surface);border:1px solid var(--line-strong);border-radius:6px;padding:7px 10px;width:190px}
+.search::placeholder{color:var(--muted)}
+
+/* summary strip */
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:22px 0 8px}
+@media (max-width:760px){.summary{grid-template-columns:1fr}}
+.strip{display:flex;flex-direction:column;gap:10px}
+.strip .eyebrow{display:flex;align-items:center;gap:8px}
+.strip .eyebrow::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--short-mark)}
+.strip.long .eyebrow::before{background:var(--long-mark)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:baseline;gap:8px;padding:7px 11px;border-radius:6px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);font-size:14px;color:var(--ink);cursor:pointer}
+.chip:hover{border-color:var(--line-strong)}
+.chip .t{font-family:var(--mono);font-weight:500}
+.chip .n{color:var(--ink-2);font-size:13px}
+.chip .s{font-family:var(--mono);font-size:12px;color:var(--short);margin-left:2px}
+.chip.long .s{color:var(--long)}
+.chip.empty{cursor:default;color:var(--muted);font-style:italic;box-shadow:none}
+.change{margin:10px 0 0;padding:14px 16px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0;color:var(--ink);font-size:14.5px}
+.change b{font-weight:600}
+.lines{margin:14px 0 0;padding:0;list-style:none;color:var(--ink-2);display:grid;gap:4px;font-size:14.5px}
+.lines li{padding-left:14px;position:relative}
+.lines li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--muted)}
+
+/* tabs */
+.tabs{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);margin-top:18px}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto}
+.tab{font:inherit;font-size:13.5px;font-weight:500;color:var(--ink-2);background:none;border:0;border-bottom:2px solid transparent;padding:12px 14px;cursor:pointer;white-space:nowrap;display:inline-flex;gap:7px;align-items:center}
+.tab .count{font-family:var(--mono);font-size:11px;color:var(--muted);background:var(--surface-2);padding:1px 6px;border-radius:10px}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.tab:hover{color:var(--ink)}
+.panel{padding:28px 0 40px}
+.panel[hidden]{display:none}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.section-head p{color:var(--ink-2);max-width:70ch;font-size:14.5px}
+
+/* score table */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
+th,td{padding:10px 12px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--line)}
+tbody tr:last-child td{border-bottom:0}
+th{font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface-2);cursor:pointer;user-select:none;white-space:nowrap}
+th.num,td.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+th[aria-sort]::after{content:" ↓";color:var(--ink-2)}
+th[aria-sort="ascending"]::after{content:" ↑"}
+tr.sel td{background:var(--short-soft)}
+tr.hit{cursor:pointer}
+tr.hit:hover td{background:var(--surface-2)}
+tr.sel.hit:hover td{background:var(--short-soft)}
+td .tk{font-family:var(--mono);font-weight:500;color:var(--ink)}
+td .nm{color:var(--ink-2);font-size:12.5px;display:block}
+.bar{display:flex;height:10px;width:170px;border-radius:3px;overflow:hidden;background:var(--surface-2);gap:2px}
+.bar i{display:block;height:100%}
+.state{font-family:var(--mono);font-size:11.5px;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.state.sel{background:var(--short-mark);color:#fff}
+.state.out{color:var(--ink-2);background:var(--surface-2)}
+.reason{color:var(--muted);font-size:12.5px;display:block;max-width:26ch;white-space:normal}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:10px 2px 0;font-size:12.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.legend .w{font-family:var(--mono);color:var(--muted)}
+
+/* fichas */
+.fichas{display:grid;gap:18px;margin-top:30px}
+.ficha{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:70px}
+.ficha-head{display:grid;grid-template-columns:auto 1fr auto;gap:14px 18px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.ficha-head .tk{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--short);letter-spacing:-.01em}
+.ficha.long .ficha-head .tk{color:var(--long)}
+.ficha-head .meta{color:var(--ink-2);font-size:13.5px}
+.ficha-head .meta b{color:var(--ink);font-weight:600}
+.score{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.score .big{font-family:var(--display);font-size:30px;line-height:1;color:var(--ink)}
+.score .big small{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:4px}
+.score .bar{width:150px}
+.ficha-body{display:grid;grid-template-columns:1.4fr 1fr;gap:0}
+@media (max-width:760px){.ficha-body{grid-template-columns:1fr}.ficha-head{grid-template-columns:1fr auto}}
+.col{padding:18px 20px}
+.col+.col{border-left:1px solid var(--line)}
+@media (max-width:760px){.col+.col{border-left:0;border-top:1px solid var(--line)}}
+.col .eyebrow{margin-bottom:8px}
+.col .eyebrow+*{margin-bottom:16px}
+.signals{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.signals li{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline;padding-bottom:9px;border-bottom:1px dashed var(--line);font-size:14px}
+.signals li:last-child{border-bottom:0;padding-bottom:0}
+.signals .v{font-family:var(--mono);font-size:13px;color:var(--short);white-space:nowrap}
+.ficha.long .signals .v{color:var(--long)}
+.src{font-size:12px;color:var(--muted);margin-left:6px}
+.src a{color:var(--accent)}
+.quote{margin:0;padding:12px 14px;background:var(--surface-2);border-radius:6px;font-family:var(--display);font-size:16px;line-height:1.45;color:var(--ink)}
+.quote .src{display:block;margin:6px 0 0;font-family:var(--body)}
+.risks{margin:0;padding-left:18px;color:var(--ink-2);font-size:14px;display:grid;gap:5px}
+.cat{display:flex;gap:12px;align-items:baseline;font-size:14px}
+.cat .d{font-family:var(--mono);font-size:12.5px;color:var(--ink);background:var(--surface-2);padding:2px 7px;border-radius:4px;white-space:nowrap}
+.verdict{font-family:var(--display);font-size:17px;line-height:1.4;color:var(--ink);border-top:1px solid var(--line);padding:14px 20px;background:var(--surface)}
+.verdict b{font-weight:600;color:var(--short)}
+.ficha.long .verdict b{color:var(--long)}
+
+/* longs */
+.long-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+.trend{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--long);background:var(--long-soft);padding:3px 8px;border-radius:4px}
+.dots{display:flex;gap:6px;align-items:center}
+.dots i{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--long-mark);display:inline-block}
+.dots i.on{background:var(--long-mark)}
+.dots .lbl{font-family:var(--mono);font-size:12px;color:var(--ink-2);margin-left:6px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13.5px}
+.checks li{display:grid;grid-template-columns:18px 1fr;gap:8px;color:var(--ink-2)}
+.checks li.on{color:var(--ink)}
+.checks li::before{content:"–";font-family:var(--mono);color:var(--muted);text-align:center}
+.checks li.on::before{content:"✓";color:var(--long)}
+.notes{margin:8px 0 0;padding-left:18px;font-size:13px;color:var(--ink-2);display:grid;gap:4px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+.kv dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.kv dd{margin:0;color:var(--ink)}
+.empty-state{padding:26px;border:1px dashed var(--line-strong);border-radius:8px;color:var(--ink-2);font-family:var(--display);font-size:17px}
+
+/* watchlist */
+.watch{display:grid;gap:0;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}
+.watch-row{display:grid;grid-template-columns:90px 180px 1fr;gap:14px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:baseline;font-size:14px}
+.watch-row:last-child{border-bottom:0}
+@media (max-width:640px){.watch-row{grid-template-columns:80px 1fr}.watch-row .nm{display:none}}
+.watch-row .tk{font-family:var(--mono);font-weight:500}
+.watch-row .nm{color:var(--ink-2)}
+.watch-row .note{color:var(--ink)}
+.watch-row.quiet .note{color:var(--muted);font-style:italic}
+.watch-row.news .tk::after{content:"●";color:var(--c4);font-size:9px;margin-left:8px;vertical-align:middle}
+
+/* calendar */
+.cal{display:grid;gap:0;border-left:2px solid var(--line-strong);margin-left:6px}
+.day{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:0 0 22px 18px;position:relative}
+.day::before{content:"";position:absolute;left:-7px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--line-strong)}
+.day.soon::before{background:var(--accent);border-color:var(--accent)}
+.day .d{font-family:var(--mono);font-size:13px;color:var(--ink);padding-top:2px}
+.day .d small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.evs{display:grid;gap:8px}
+.ev{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;font-size:14px}
+.ev .tk{font-family:var(--mono);font-size:12.5px;padding:2px 7px;border-radius:4px;background:var(--short-soft);color:var(--short);white-space:nowrap}
+.ev.long .tk{background:var(--long-soft);color:var(--long)}
+.ev.other .tk{background:var(--surface-2);color:var(--ink-2)}
+@media (max-width:640px){.day{grid-template-columns:1fr;gap:6px}}
+
+/* sources */
+.src-groups{columns:2;column-gap:32px}
+@media (max-width:760px){.src-groups{columns:1}}
+.src-group{break-inside:avoid;margin-bottom:22px}
+.src-group h3{font-size:17px;margin-bottom:8px}
+.src-group ul{margin:0;padding-left:18px;font-size:13.5px;display:grid;gap:4px;color:var(--ink-2)}
+
+/* method */
+.method{max-width:70ch;color:var(--ink-2);font-size:14.5px;display:grid;gap:14px}
+.method h3{color:var(--ink);margin-top:8px}
+.method table{min-width:0;font-size:13.5px}
+.method th{cursor:default}
+
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:12.5px;display:grid;gap:6px}
+footer .legal{color:var(--ink-2)}
+.hidden-by-search{display:none !important}
+@media (prefers-reduced-motion:no-preference){
+  .ficha,.chip{transition:border-color .15s ease,transform .15s ease}
+  .chip:hover{transform:translateY(-1px)}
+}
+@media print{.tabs,.tools{display:none}.panel[hidden]{display:block}}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-top">
+      <div>
+        <div class="eyebrow" id="eyebrow">Escáner semanal</div>
+        <h1>Radar semanal</h1>
+        <p class="sub" id="headline"></p>
+      </div>
+      <div class="tools">
+        <input class="search" id="search" type="search" placeholder="Filtrar por ticker…" aria-label="Filtrar por ticker">
+        <button class="btn" id="theme" type="button" aria-label="Cambiar tema">Tema</button>
+      </div>
+    </div>
+    <div class="summary">
+      <div class="strip short">
+        <div class="eyebrow">Shorts elegidos</div>
+        <div class="chips" id="chips-short"></div>
+      </div>
+      <div class="strip long">
+        <div class="eyebrow">Longs incipientes</div>
+        <div class="chips" id="chips-long"></div>
+      </div>
+    </div>
+    <p class="change" id="change" hidden></p>
+    <ul class="lines" id="lines"></ul>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-panel="shorts" aria-selected="true">Shorts <span class="count" id="n-shorts"></span></button>
+    <button class="tab" role="tab" data-panel="longs" aria-selected="false">Longs <span class="count" id="n-longs"></span></button>
+    <button class="tab" role="tab" data-panel="watch" aria-selected="false">Vigilancia</button>
+    <button class="tab" role="tab" data-panel="calendar" aria-selected="false">Calendario <span class="count" id="n-cal"></span></button>
+    <button class="tab" role="tab" data-panel="sources" aria-selected="false">Fuentes</button>
+    <button class="tab" role="tab" data-panel="method" aria-selected="false">Método</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="panel" id="panel-shorts" role="tabpanel">
+    <div class="section-head">
+      <h2>Candidatas puntuadas</h2>
+      <p>Puntuación ponderada sobre 100. Las tres elegidas son las de mejor relación entre deterioro verificable y riesgo de mantener un corto en CFD. Pulsa una cabecera para ordenar, una fila para ir a su ficha.</p>
+    </div>
+    <div class="table-wrap">
+      <table id="score-table">
+        <thead><tr>
+          <th data-k="ticker">Empresa</th>
+          <th class="num" data-k="deterioro" title="Deterioro fundamental (40 %)">Deter.</th>
+          <th class="num" data-k="sector" title="Confirmación sectorial (20 %)">Sector</th>
+          <th class="num" data-k="squeeze" title="Riesgo de squeeze, invertido (20 %)">Squeeze</th>
+          <th class="num" data-k="rescatador" title="Sin rescatador ni OPA, invertido (15 %)">Rescat.</th>
+          <th class="num" data-k="coste" title="Coste de mantener (5 %)">Coste</th>
+          <th data-k="total" aria-sort="descending">Total</th>
+          <th data-k="si">Short int.</th>
+          <th data-k="selected">Estado</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="fichas" id="fichas-short"></div>
+  </section>
+
+  <section class="panel" id="panel-longs" role="tabpanel" hidden>
+    <div class="section-head">
+      <h2>Longs incipientes</h2>
+      <p>Empresas enganchadas a una tendencia mundial que cumplen al menos tres de las cinco señales de "todavía no es consenso". No son recomendaciones: son puntos de partida para investigar.</p>
+    </div>
+    <div class="long-grid" id="longs"></div>
+  </section>
+
+  <section class="panel" id="panel-watch" role="tabpanel" hidden>
+    <div class="section-head">
+      <h2>Vigilancia de posiciones</h2>
+      <p>Solo aparece una nota cuando la semana ha traído algo que cambia la tesis. El punto ámbar marca las que tienen novedad.</p>
+    </div>
+    <div class="watch" id="watch"></div>
+  </section>
+
+  <section class="panel" id="panel-calendar" role="tabpanel" hidden>
+    <div class="section-head">
+      <h2>Catalizadores, próximas dos semanas</h2>
+      <p>Resultados, entregas, decisiones regulatorias y rebalanceos que pueden mover las candidatas. El punto azul marca los eventos a menos de siete días.</p>
+    </div>
+    <div class="cal" id="calendar"></div>
+  </section>
+
+  <section class="panel" id="panel-sources" role="tabpanel" hidden>
+    <div class="section-head"><h2>Fuentes</h2></div>
+    <div class="src-groups" id="sources"></div>
+  </section>
+
+  <section class="panel" id="panel-method" role="tabpanel" hidden>
+    <div class="section-head"><h2>Cómo se puntúa</h2></div>
+    <div class="method">
+      <p>Cada semana se puntúan al menos seis candidatas a short y se eligen tres. La puntuación es la suma ponderada de cinco criterios, cada uno de 1 a 5. Los criterios de riesgo están invertidos: más puntos significa menos riesgo para el corto.</p>
+      <div class="table-wrap"><table id="method-table"><thead><tr><th>Criterio</th><th>Qué mide</th><th class="num">Peso</th></tr></thead><tbody>
+        <tr><td>Deterioro fundamental</td><td>Guía rebajada, márgenes negativos, FCF negativo, deuda neta/EBITDA &gt; 4x, pérdida de clientes acelerada</td><td class="num">40 %</td></tr>
+        <tr><td>Confirmación sectorial</td><td>Noticia de prensa especializada que explica el deterioro y apunta a que continúa</td><td class="num">20 %</td></tr>
+        <tr><td>Riesgo de squeeze (inv.)</td><td>Short interest &lt; 10 % del float = 5; 10-20 % = 3; &gt; 20 % = 1. Más de 5 días para cubrir resta 1</td><td class="num">20 %</td></tr>
+        <tr><td>Sin rescatador / OPA (inv.)</td><td>Sin accionista &gt; 30 % que haya inyectado capital en 12 meses y sin OPA plausible = 5; con ambos = 1</td><td class="num">15 %</td></tr>
+        <tr><td>Coste de mantener</td><td>Dividendo suspendido y préstamo barato = 5; dividendo alto o "hard to borrow" = 1</td><td class="num">5 %</td></tr>
+      </tbody></table></div>
+      <p>Descarte automático: short interest &gt; 30 % del float, OPA anunciada o accionista obligado a lanzarla, o rebote &gt; 15 % en la última semana por noticias.</p>
+      <h3>Longs incipientes</h3>
+      <p>Una candidata a long entra si cumple al menos tres de cinco señales: capitalización pequeña o poca cobertura; ingresos o pedidos creciendo más del 30 % desde base pequeña; catalizador estructural reciente; posición defendible; balance para 24 meses. Se descartan las que ya han subido más del 200 % en doce meses.</p>
+      <p>Metodología completa en <span class="mono">research/weekly-scan/METHODOLOGY.md</span>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div id="meta"></div>
+  <div class="legal" id="legal"></div>
+</footer>
+
+<script>
+window.REPORT = {"meta": {"date": "2026-09-04", "week": 36, "model": "claude-opus-5", "previous_report": null, "legal": "Investigación con datos públicos. No es asesoramiento financiero ni una recomendación personalizada. Los CFD son productos apalancados; entre el 74 % y el 89 % de las cuentas minoristas pierden dinero.", "generated_at": "2026-09-04T09:32", "weights": {"deterioro": 0.4, "sector": 0.2, "squeeze": 0.2, "rescatador": 0.15, "coste": 0.05}, "criteria_labels": {"deterioro": "Deterioro fundamental", "sector": "Confirmación sectorial", "squeeze": "Riesgo de squeeze (inv.)", "rescatador": "Sin rescatador / OPA (inv.)", "coste": "Coste de mantener"}, "b2_labels": {"small_cap": "Capitalización < 15.000 M o cobertura < 10 analistas", "growth": "Ingresos o pedidos > 30 % interanual, o contrato relevante", "catalyst": "Catalizador estructural en las últimas 4-8 semanas", "moat": "Posición defendible (IP, nicho, barrera)", "balance": "Balance para 24 meses o ya rentable"}}, "summary": {"headline": "Volkswagen, Nike y Campbell's combinan deterioro verificable con short interest bajo o moderado y sin accionista rescatador; Charter y Whirlpool caen del podio por riesgo de squeeze y por la naturaleza real de su recorte de guía.", "change_vs_previous": "No hay informe semanal anterior: la comparación se hace contra el informe base research/cfd-short-candidates-2026-09.md, de la misma fecha. El cambio principal es que Charter pierde la categoría de riesgo bajo-medio al confirmarse un 20,4 % del float en corto (el valor más shorteado del S&P 500 según S3 Partners) y que Whirlpool se degrada porque su recorte de guía respondió al gasto financiero, no a la operativa, y la acción llegó a subir un 17,5 % tras anunciarlo.", "lines": ["Shorts elegidos: Volkswagen (VOW3) 4,25, Nike (NKE) 4,05 y Campbell's (CPB) 3,95 sobre 5, entre siete candidatas puntuadas.", "Volkswagen suma un flujo vendedor mecánico con fecha: sale del Euro Stoxx 50 el 21 de septiembre tras 28 años, con más de 28.000 M€ solo en ETF referenciados al índice.", "Campbell's entra esta semana: el 3 de septiembre rebajó la guía FY27 (ventas -2 % a -4 %, BPA -17 % a -24 %) y recortó el dividendo un 36 % con deuda neta en 4,3x EBITDA.", "Nike cotiza en mínimos de 12 años a 39,09 $ con el octavo trimestre consecutivo de caída en China y 3,15 puntos de margen bruto perdidos por aranceles.", "Longs incipientes: Centrus Energy (LEU) y SEALSQ (LAES) cumplen las señales de B2 con holgura; Ondas (ONDS) entra al límite, con +198,2 % a doce meses frente al umbral de descarte del 200 %."]}, "shorts": {"candidates": [{"ticker": "VOW3", "name": "Volkswagen", "market": "XETRA", "price": "~74 €", "scores": {"deterioro": 4, "sector": 4, "squeeze": 5, "rescatador": 5, "coste": 2}, "selected": true, "short_interest": "~0,01 % del float (ADR VWAGY)", "days_to_cover": null, "contributions": {"deterioro": 32.0, "sector": 16.0, "squeeze": 20.0, "rescatador": 15.0, "coste": 2.0}, "total": 85.0}, {"ticker": "NKE", "name": "NIKE", "market": "NYSE", "price": "39,09 $", "scores": {"deterioro": 4, "sector": 4, "squeeze": 4, "rescatador": 5, "coste": 2}, "selected": true, "short_interest": "sin dato", "days_to_cover": null, "contributions": {"deterioro": 32.0, "sector": 16.0, "squeeze": 16.0, "rescatador": 15.0, "coste": 2.0}, "total": 81.0}, {"ticker": "CPB", "name": "The Campbell's Company", "market": "NASDAQ", "price": "sin dato", "scores": {"deterioro": 4, "sector": 5, "squeeze": 3, "rescatador": 4, "coste": 3}, "selected": true, "short_interest": "14,30 % de las acciones en circulación", "days_to_cover": null, "contributions": {"deterioro": 32.0, "sector": 20.0, "squeeze": 12.0, "rescatador": 12.0, "coste": 3.0}, "total": 79.0}, {"ticker": "CHTR", "name": "Charter Communications", "market": "NASDAQ", "price": "sin dato", "scores": {"deterioro": 4, "sector": 5, "squeeze": 1, "rescatador": 4, "coste": 4}, "selected": false, "discard_reason": "20,4 % del float en corto según S3 Partners, el valor más shorteado del S&P 500; otras fuentes llegan al 26,11 %", "short_interest": "20,4 % del float (hasta 26,11 % según la fuente)", "days_to_cover": null, "contributions": {"deterioro": 32.0, "sector": 20.0, "squeeze": 4.0, "rescatador": 12.0, "coste": 4.0}, "total": 72.0}, {"ticker": "WHR", "name": "Whirlpool", "market": "NYSE", "price": "sin dato", "scores": {"deterioro": 3, "sector": 4, "squeeze": 3, "rescatador": 5, "coste": 5}, "selected": false, "discard_reason": "El recorte a 2,50-3,00 $ vino del gasto financiero (de 300 a 350 M$), no de la operativa, que la compañía reafirmó; la acción llegó a subir un 17,5 % tras anunciarlo", "short_interest": "15,3 % (8,24 M de acciones, -27,6 % entre el 31 de julio y el 15 de agosto)", "days_to_cover": null, "contributions": {"deterioro": 24.0, "sector": 16.0, "squeeze": 12.0, "rescatador": 15.0, "coste": 5.0}, "total": 72.0}, {"ticker": "ONON", "name": "On Holding", "market": "NYSE", "price": "sin dato", "scores": {"deterioro": 2, "sector": 4, "squeeze": 5, "rescatador": 4, "coste": 5}, "selected": false, "discard_reason": "Deterioro solo relativo: recorta la guía pero sigue creciendo en el entorno del 20 % bajo, con DTC +26,0 % y beneficio de 490 M$", "short_interest": "5,93 % de las acciones en circulación", "days_to_cover": null, "contributions": {"deterioro": 16.0, "sector": 16.0, "squeeze": 20.0, "rescatador": 12.0, "coste": 5.0}, "total": 69.0}, {"ticker": "KHC", "name": "Kraft Heinz", "market": "NASDAQ", "price": "sin dato", "scores": {"deterioro": 2, "sector": 5, "squeeze": 5, "rescatador": 3, "coste": 1}, "selected": false, "discard_reason": "Batió en el Q2 y elevó la guía de ventas orgánicas a -0,5 %/-2,0 % desde -1,5 %/-3,5 %; apalancamiento en 3,0x y dividendo alto que pagaría el corto", "short_interest": "sin dato", "days_to_cover": null, "contributions": {"deterioro": 16.0, "sector": 20.0, "squeeze": 20.0, "rescatador": 9.0, "coste": 1.0}, "total": 66.0}], "selected": [{"ticker": "VOW3", "name": "Volkswagen", "market": "XETRA", "price": "~74 €", "price_date": "2026-09-02", "short_interest": "~0,01 % del float (ADR VWAGY)", "signals": [{"text": "Expulsión del Euro Stoxx 50 confirmada por ISS Stoxx, efectiva antes de la apertura del 21 de septiembre: primera vez en los 28 años del índice. Entran Nokia y Engie", "value": "21 sep 2026", "source": {"title": "MarketScreener", "url": "https://www.marketscreener.com/news/index-monitor-aftermath-of-the-crisis-volkswagen-vw-must-leave-the-eurostoxx-50-ce7858d2db8af327"}}, {"text": "Activos en ETF referenciados al Euro Stoxx 50 que deben deshacer la posición, más mandatos institucionales adicionales", "value": "> 28.000 M€", "source": {"title": "ad-hoc-news", "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-faces-a-double-squeeze-index-expulsion-meets-a-boardroom-showdown/70048691"}}, {"text": "Entregas del grupo hasta 4,1 millones de vehículos, con China como principal lastre (-26 % en el segundo trimestre)", "value": "-6,3 %", "source": {"title": "ad-hoc-news", "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-faces-a-double-squeeze-index-expulsion-meets-a-boardroom-showdown/70048691"}}, {"text": "Plan sobre la mesa del consejo de vigilancia para cerrar cuatro plantas alemanas: Emden y Zwickau en 2031, Hannover en 2032 y Audi Neckarsulm en 2034", "value": "4 plantas", "source": {"title": "ad-hoc-news", "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-s-double-bind-index-expulsion-lands-as-boardroom-braces-for/70050060"}}, {"text": "Discrepancia de fuentes en el beneficio operativo: ad-hoc-news cita 3.600 M€ (+4,5 %) mientras el informe base recoge 5.931 M€ (-11,6 %) en el semestre. Probable diferencia de perímetro; no se elige cifra", "value": "discrepancia", "source": {"title": "Investing.com", "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-volkswagen-group-posts-h1-2026-profit-miss-93CH-4810854"}}], "sector_news": {"text": "El consejo de vigilancia vota el cierre de plantas alemanas en la misma semana del cambio de índice, con hasta 50.000 empleos afectados: el sector auto alemán sigue en fase de reconocimiento del ajuste, no de recuperación.", "source": {"title": "CNBC", "url": "https://www.cnbc.com/2026/07/02/volkswagen-vw-job-cuts-germany-autos.html"}}, "risks": ["El evento de índice está anunciado y puede estar descontado: el flujo vendedor se agota el 21 de septiembre y suele haber rebote técnico después", "El dividendo sigue vigente y en un CFD corto lo paga el operador", "Porsche SE y Baja Sajonia controlan el capital: no hay OPA posible, pero tampoco un activista que acelere el ajuste", "Un acuerdo laboral sin conflicto o una noticia favorable de aranceles o de China revaloriza rápido"], "catalyst": {"date": "2026-09-21", "text": "Efectividad del cambio en el Euro Stoxx 50 (salen VW y Wolters Kluwer, entran Nokia y Engie); antes, el voto del consejo de vigilancia sobre los cierres"}, "verdict": "Mejor relación deterioro/riesgo de la lista: el short interest es prácticamente inexistente y hay un flujo vendedor mecánico con fecha conocida.", "scores": {"deterioro": 4, "sector": 4, "squeeze": 5, "rescatador": 5, "coste": 2}, "contributions": {"deterioro": 32.0, "sector": 16.0, "squeeze": 20.0, "rescatador": 15.0, "coste": 2.0}, "total": 85.0}, {"ticker": "NKE", "name": "NIKE", "market": "NYSE", "price": "39,09 $", "price_date": "2026-09-01", "short_interest": "sin dato", "signals": [{"text": "Ingresos de Gran China en el ejercicio 2026 (12,6 % del total), -13,0 % a divisa constante y octavo trimestre consecutivo de caída", "value": "5.900 M$ (-11,0 %)", "source": {"title": "Sporting Goods Intelligence", "url": "https://www.sgieurope.com/financing/nike-stock-hits-12-year-low-after-q3-results/120425.article"}}, {"text": "Guía de caída en China para el trimestre en curso mientras reduce sell-in y sigue la limpieza del canal mayorista", "value": "~-20 %", "source": {"title": "Sporting Goods Intelligence", "url": "https://www.sgieurope.com/financing/nike-stock-hits-12-year-low-after-q3-results/120425.article"}}, {"text": "Caída del margen bruto guiada, con 3,15 puntos de impacto por aranceles (300 puntos básicos solo en Norteamérica por el arancel base global del 10 %)", "value": "-1,75 a -2,25 pp", "source": {"title": "TradingKey", "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/261746593-nike-china-sales-tariffs-supply-chain-anta-dtc-inventory-tradingkey"}}, {"text": "Cotización en mínimos de 12 años, un 78 % por debajo del máximo de noviembre de 2021. Discrepancia: otra fuente cita 38,07 $ y lo describe como mínimo de más de veinte años", "value": "39,09 $", "source": {"title": "Startup Fortune", "url": "https://startupfortune.com/nike-stock-hits-a-12-year-low-as-china-sales-keep-sliding/"}}, {"text": "Short interest y días para cubrir: sin dato verificado en esta ejecución. Por eso la nota de squeeze se fija en 4 y no en 5, pese al tamaño del float", "value": "sin dato", "source": {"title": "Finviz", "url": "https://finviz.com/quote?t=NKE&ty=si"}}], "sector_news": {"text": "El calzado deportivo entero se desacelera: On Holding recortó la guía 2026 del \"al menos 23 %\" al entorno del 20 % bajo y se desplomó más del 19 % en una sesión, su peor día desde la salida a bolsa de 2021, por el frenazo del canal mayorista.", "source": {"title": "TradingView / Stocktwits", "url": "https://www.tradingview.com/news/stocktwits:f9ca57bb5094b:0-onon-stock-plunges-to-2-year-lows-in-record-single-day-crash-after-guidance-cut-revenue-miss/"}}, "risks": ["Ya está en mínimos de 12 años: el sesgo de un valor muy sobrevendido es asimétrico al alza", "Paga 0,41 $ de dividendo trimestral (registro el 1 de septiembre, pago el 1 de octubre), coste directo para el CFD corto", "Los resultados del 1 de octubre son un evento binario: cualquier señal de estabilización en China dispara un rebote violento", "Mega-cap con cobertura masiva: poco deterioro que el mercado no conozca ya"], "catalyst": {"date": "2026-10-01", "text": "Resultados del primer trimestre fiscal 2027 tras el cierre del mercado, el mismo día del pago del dividendo"}, "verdict": "Deterioro estructural claro en el mercado que más importaba y riesgo de squeeze mínimo por tamaño, pero el punto de entrada es peor que en Volkswagen porque el precio ya recoge mucho.", "scores": {"deterioro": 4, "sector": 4, "squeeze": 4, "rescatador": 5, "coste": 2}, "contributions": {"deterioro": 32.0, "sector": 16.0, "squeeze": 16.0, "rescatador": 15.0, "coste": 2.0}, "total": 81.0}, {"ticker": "CPB", "name": "The Campbell's Company", "market": "NASDAQ", "price": "sin dato", "price_date": "2026-09-03", "short_interest": "14,30 % de las acciones en circulación (42,63 M de acciones)", "signals": [{"text": "Guía FY27 de ventas netas y orgánicas frente a un consenso de ~-0,8 %", "value": "-2 % a -4 %", "source": {"title": "The Stock Observer", "url": "https://www.thestockobserver.com/2026/09/03/campbells-nasdaqcpb-updates-fy-2027-earnings-guidance.html"}}, {"text": "Guía de BPA ajustado FY27 de 1,65-1,80 $ frente a un consenso de ~1,83-1,86 $, con EBIT ajustado guiado a caer entre el 7 % y el 12 %", "value": "-17 % a -24 %", "source": {"title": "Investing.com", "url": "https://www.investing.com/news/company-news/campbells-q4-fy26-slides-sales-miss-margins-shrink-dividend-cut-93CH-4887635"}}, {"text": "Recorte del dividendo trimestral a 0,25 $ desde los 1,56 $ anualizados anteriores, para acelerar la reducción de deuda", "value": "-36 %", "source": {"title": "Proactive Investors", "url": "https://www.proactiveinvestors.com/companies/news/1098066/campbell-s-cuts-dividend-unveils-500m-cost-plan-after-profit-slide-1098066.html"}}, {"text": "Apalancamiento de deuda neta sobre EBITDA, con objetivo de bajar a ~3x: supera el umbral de 4x de la metodología", "value": "4,3x", "source": {"title": "Investing.com", "url": "https://www.investing.com/news/company-news/campbells-q4-fy26-slides-sales-miss-margins-shrink-dividend-cut-93CH-4887635"}}, {"text": "Q4 FY26: ventas netas de 2.100 M$ frente a 2.150 M$ esperados y BPA ajustado de 0,39 $, un 37 % menos que un año antes", "value": "-37 % BPA", "source": {"title": "The Campbell's Company", "url": "https://www.thecampbellscompany.com/newsroom/press-releases/campbells-reports-fourth-quarter-fiscal-2026-results/"}}], "sector_news": {"text": "La alimentación envasada estadounidense lleva todo el año con volúmenes en -2 % según TD Cowen, con cuota récord de marca blanca, aranceles y uso creciente de GLP-1; de 16 iniciativas de inversión en marca de Campbell's, Conagra, General Mills y Kraft Heinz, solo siete devolvieron la marca al crecimiento.", "source": {"title": "Baking Business", "url": "https://www.bakingbusiness.com/articles/65680-food-industry-outlook-improves-little-for-2026"}}, "risks": ["El 14,3 % de short interest ya no es bajo y el plan de 500 M$ de ahorro hasta FY2030 puede generar rebotes", "Los descendientes de la familia Dorrance mantienen históricamente una participación de referencia (porcentaje actual: sin dato): reduce la probabilidad de OPA pero añade un comprador estable", "El sector aparece en listas de valor tras las caídas: riesgo de rebote por rotación", "Sigue pagando 0,25 $ trimestrales, que en un CFD corto paga el operador"], "catalyst": {"date": "2026-12-09", "text": "Resultados del Q1 FY27 previsibles a principios de diciembre (fecha exacta sin confirmar); antes, posibles revisiones de rating por el apalancamiento de 4,3x"}, "verdict": "El deterioro más nítido y más reciente de la semana, con confirmación sectorial de primera categoría; el freno es un short interest ya de dos dígitos.", "scores": {"deterioro": 4, "sector": 5, "squeeze": 3, "rescatador": 4, "coste": 3}, "contributions": {"deterioro": 32.0, "sector": 20.0, "squeeze": 12.0, "rescatador": 12.0, "coste": 3.0}, "total": 79.0}]}, "longs": [{"ticker": "LEU", "name": "Centrus Energy", "market": "NYSE", "market_cap": "~3.500 M$", "trend": "Nuclear avanzada: combustible HALEU para reactores modulares pequeños y desacoplamiento del enriquecimiento ruso", "why_now": "Los contratos de combustible para SMR están cerrándose ahora, antes de que los reactores existan: Centrus ha firmado en el último mes el acuerdo definitivo de enriquecimiento con X-energy y acumula una cartera récord que llega hasta 2040.", "signals": {"small_cap": true, "growth": true, "catalyst": true, "moat": true, "balance": true}, "signal_notes": ["Capitalización de ~3.500 M$, muy por debajo del umbral de 15.000 M$; cotizaba a 176,93 $ el 30 de julio de 2026 y acumula -31,1 % en el año, lejos del descarte por +200 %", "Cartera de 4.500 M$ a 30 de junio de 2026 con vencimientos hasta 2040; el segmento LEU aporta ~3.700 M$, de los que 2.400 M$ están bajo acuerdos definitivos. Ingresos del Q2 de 176,1 M$, +14 %", "Contrato definitivo con X-energy para LEU y HALEU del lote inicial de reactores Xe-100 y combustible TRISO-X, firmado en el último mes, sobre el premio previo de 900 M$ del Departamento de Energía", "La American Centrifuge Plant de Piketon (Ohio) es la única instalación estadounidense con licencia para producir HALEU comercial: barrera regulatoria y de capital muy alta", "Beneficio neto ajustado de 38,7 M$ en el Q2 y prepagos de contratos como capital no dilutivo"], "thesis": "El cuello de botella del despliegue de SMR no son los reactores sino el combustible enriquecido, y hay un único proveedor estadounidense con licencia. La cartera ya está firmada; lo que el mercado aún no paga es la conversión de los 3.000 M$ contingentes en firmes.", "kill_criteria": "Un giro presupuestario que retrase los SMR; el retorno del material enriquecido ruso al mercado occidental; retrasos en el escalado de Piketon; que los contratos contingentes (3.000 M$ de los 3.700 M$) no se conviertan en firmes.", "horizon": "3-5 años", "next_catalyst": {"date": "2026-11-05", "text": "Resultados del Q3 2026: hitos de capacidad de la American Centrifuge Plant y nuevas adjudicaciones del DOE"}, "sources": [{"title": "SEC 10-Q Q2 2026", "url": "https://www.sec.gov/Archives/edgar/data/0001065059/000162828026053863/leu-20260630.htm"}, {"title": "Cartera récord (Yahoo Finance)", "url": "https://finance.yahoo.com/energy/articles/centrus-energy-corp-leu-q2-231855682.html"}, {"title": "Contrato con X-energy (Energies Media)", "url": "https://energiesmedia.com/centrus-xenergy-uranium-enrichment-energies/"}, {"title": "La era dorada de la energía nuclear (DOE)", "url": "https://www.energy.gov/articles/fact-sheet-golden-era-american-nuclear-energy-has-arrived"}], "signals_met": 5}, {"ticker": "LAES", "name": "SEALSQ Corp", "market": "NASDAQ", "market_cap": "525,75 M$", "trend": "Criptografía post-cuántica: migración obligada de infraestructura tras la finalización de los estándares PQC del NIST", "why_now": "Las certificaciones FIPS 140-3 y TCG de su chip post-cuántico QS7001 se cierran entre finales de 2026 y principios de 2027, justo cuando la migración PQC pasa de plan a presupuesto en todos los sectores.", "signals": {"small_cap": true, "growth": true, "catalyst": true, "moat": false, "balance": true}, "signal_notes": ["Capitalización de 525,75 M$ con 222,77 millones de acciones a 2,39 $ el 1 de septiembre de 2026; rango de 52 semanas de 2,00 a 8,71 $, es decir cerca del mínimo y lejos del descarte por +200 %", "Ingresos preliminares H1 2026 de ~11 M$, +120 % interanual frente a 5 M$ en H1 2025; guía FY2026 de 27-36 M$, entre +50 % y +100 % sobre los 18,3 M$ auditados de FY2025", "En septiembre de 2026 integró wolfTPM en la plataforma QVault TPM de silicio post-cuántico y actualizó el calendario de certificaciones, con primeros ingresos de QS7001/QVault a final del segundo semestre", "Posición defendible contada como NO cumplida por prudencia: tiene silicio propio certificable y una cartera declarada de más de 225 M$ hasta 2029, pero las certificaciones no están cerradas y el nicho atraerá a los grandes fabricantes de semiconductores seguros", "Caja e inversiones a corto plazo de ~495 M$ a 30 de junio de 2026. ATENCIÓN: esa cifra equivale casi a toda la capitalización (525,75 M$), lo que implica que el mercado no atribuye valor al negocio operativo o que parte de esos activos no es caja líquida; verificar en el 6-K antes de darla por buena"], "thesis": "La migración post-cuántica es un cambio de silicio, no solo de software, y SEALSQ es de los pocos cotizados pequeños con chip propio en certificación. Cotiza casi a caja neta, de modo que el negocio se paga casi a cero.", "kill_criteria": "Retraso o fallo de la certificación FIPS 140-3/TCG; que la migración PQC se resuelva por software y no por hardware; dilución adicional (la compañía ya ha ampliado capital repetidamente); que la caja declarada no sea íntegramente líquida.", "horizon": "3-5 años", "next_catalyst": {"date": "2026-12-31", "text": "Primeros ingresos de QS7001/QVault a final de 2026 y cierre de las certificaciones FIPS 140-3 y TCG"}, "sources": [{"title": "Ingresos preliminares H1 2026 (Investing.com)", "url": "https://www.investing.com/news/company-news/sealsq-reports-preliminary-h1-2026-revenue-of-11-million-93CH-4777388"}, {"title": "Calendario de certificación QVault (TipRanks)", "url": "https://www.tipranks.com/news/company-announcements/sealsq-updates-post-quantum-chip-certification-schedule-targets-qvault-revenue-by-end-2026"}, {"title": "SEC 6-K", "url": "https://www.sec.gov/Archives/edgar/data/0001951222/000121390026076378/ea029728501ex99-1.htm"}, {"title": "Capitalización (StockAnalysis)", "url": "https://stockanalysis.com/stocks/laes/market-cap/"}], "signals_met": 4}, {"ticker": "ONDS", "name": "Ondas Holdings", "market": "NASDAQ", "market_cap": "4.970 M$ (21 ago) / ~3.700 M$ implícita al precio del 3 de septiembre", "trend": "Defensa europea y sistemas contra-dron tras las lecciones operativas de Ucrania", "why_now": "La European Drone Defence Initiative y los programas nacionales de Francia, Alemania, Polonia, Países Bajos, Italia y España están adjudicando ahora; el gasto público mundial en contra-UAS alcanzó los 29.000 M$ solo en el primer trimestre de 2026.", "signals": {"small_cap": true, "growth": true, "catalyst": true, "moat": true, "balance": true}, "signal_notes": ["Capitalización de 4.970 M$ el 21 de agosto de 2026 con 469,06 millones de acciones. DISCREPANCIA: al precio de 7,835 $ del 3 de septiembre la capitalización implícita sería de ~3.700 M$. Se registran ambas", "Ingresos del Q2 2026 de 83,8 M$ frente a 6,3 M$ un año antes (más de 13 veces); cartera pro forma de 757 M$, con 175 M$ de pedidos en el Q2 y otros 105 M$ entrando en el Q3; guía anual elevada de 390 M$ a 525-550 M$", "Catalizador estructural: iniciativa europea de defensa antidron a nivel UE más programas nacionales, con 29.000 M$ de gasto mundial en contra-UAS en el primer trimestre de 2026", "Plataforma Iron Drone Raider ya desplegada con un contratista de defensa europeo para un cliente gubernamental, reforzada con las adquisiciones de DZYNE y Cyber Hawk por ~325 M$", "AVISO SOBRE EL DESCARTE DE B2: la acción acumula +198,2 % en doce meses, justo por debajo del umbral de descarte del 200 %. Formalmente pasa el filtro, pero deja de ser muy incipiente en cuanto al precio; lo que sigue siendo incipiente es la ejecución del pedido, no la valoración"], "thesis": "La cartera de 757 M$ y la guía de 525-550 M$ implican que la conversión ya está contratada; el riesgo se ha desplazado de conseguir pedidos a ejecutarlos, y con 1.400 M$ de caja y 43,1 % de margen bruto la ejecución está financiada.", "kill_criteria": "Que la cartera de 757 M$ no se convierta en ingresos al ritmo guiado; integración fallida de DZYNE y Cyber Hawk; que el gasto europeo se concentre en campeones nacionales (Rheinmetall, Thales, Leonardo) en vez de en proveedores estadounidenses; dilución adicional.", "horizon": "6-18 meses", "next_catalyst": {"date": "2026-11-05", "text": "Resultados del Q3 2026: prueba de la aceleración del segundo semestre hacia los 525-550 M$ de guía"}, "sources": [{"title": "Resultados Q2 2026 (Ondas IR)", "url": "https://ir.ondas.com/press-releases/detail/326/ondas-posts-record-q2-2026-revenue-of-83-8-million-on"}, {"title": "8-K con guía elevada (StockTitan)", "url": "https://www.stocktitan.net/sec-filings/ONDS/8-k-ondas-inc-reports-material-event-e33f7c7c7ef0.html"}, {"title": "Demanda europea de contra-dron (Capstone DC)", "url": "https://capstonedc.com/insights/national-security-insights/new-threats-drive-european-drone-and-counter-drone-demand/"}, {"title": "Rentabilidad a 12 meses (Morningstar)", "url": "https://www.morningstar.com/stocks/xnas/onds/quote"}], "signals_met": 5}], "watchlist": [{"ticker": "QBTS", "name": "D-Wave Quantum", "status": "none", "note": ""}, {"ticker": "SNDK", "name": "Sandisk", "status": "news", "note": "Acumula +525 % en 2026 con recompra de 14.000 M$ y Bernstein subiendo el precio objetivo de 1.700 a 3.000 $ por la escasez plurianual de NAND, pero cae un 7 % en cinco sesiones: primera señal de agotamiento en la posición más rentable de la cartera.", "source": {"title": "Forbes", "url": "https://www.forbes.com/sites/investor-hub/article/sandisk-stock-over-574-where-its-heading-2026/"}}, {"ticker": "ASML", "name": "ASML", "status": "none", "note": ""}, {"ticker": "MCD", "name": "McDonald's", "status": "none", "note": ""}, {"ticker": "LMT", "name": "Lockheed Martin", "status": "news", "note": "Dividendo del tercer trimestre de 3,45 $ por acción pagadero el 25 de septiembre; un pedido de misiles a siete años apenas movió la acción, señal de que el mercado ya paga la cartera de defensa.", "source": {"title": "Options Trading Report", "url": "https://www.optionstradingreport.com/2026/09/lockheed-martin-got-a-7-year-missile-order-the-stock-barely-blinked/"}}], "calendar": [{"date": "2026-09-04", "ticker": "VOW3", "side": "short", "text": "Voto del consejo de vigilancia sobre el cierre de cuatro plantas alemanas"}, {"date": "2026-09-08", "ticker": "CPB", "side": "short", "text": "Publicación quincenal de short interest de FINRA (posiciones a 31 de agosto): confirma o desmiente el 14,30 % de CPB"}, {"date": "2026-09-11", "ticker": "CHTR", "side": "other", "text": "Seguimiento del short interest de Charter tras la lectura del 20,4 % del float de S3 Partners"}, {"date": "2026-09-18", "ticker": "VOW3", "side": "short", "text": "Último día de negociación antes del cambio de índice: pico del flujo vendedor de fondos indexados"}, {"date": "2026-09-21", "ticker": "VOW3", "side": "short", "text": "Efectividad del cambio en el Euro Stoxx 50: salen Volkswagen y Wolters Kluwer, entran Nokia y Engie"}, {"date": "2026-09-25", "ticker": "LMT", "side": "other", "text": "Pago del dividendo del tercer trimestre de Lockheed Martin (3,45 $)"}, {"date": "2026-10-01", "ticker": "NKE", "side": "short", "text": "Resultados del Q1 FY2027 tras el cierre y pago del dividendo de 0,41 $"}, {"date": "2026-11-05", "ticker": "LEU", "side": "long", "text": "Resultados del Q3 de Centrus Energy y de Ondas"}], "sources": [{"group": "Volkswagen (VOW3)", "links": [{"title": "Salida del EuroStoxx 50 (MarketScreener)", "url": "https://www.marketscreener.com/news/index-monitor-aftermath-of-the-crisis-volkswagen-vw-must-leave-the-eurostoxx-50-ce7858d2db8af327"}, {"title": "Fin de 28 años en el índice (TechTimes)", "url": "https://www.techtimes.com/articles/326345/20260902/volkswagens-28-year-euro-stoxx-50-tenure-ends-nokia-returns-ai-infrastructure-revenue.htm"}, {"title": "Doble presión: índice y consejo (ad-hoc-news)", "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-faces-a-double-squeeze-index-expulsion-meets-a-boardroom-showdown/70048691"}, {"title": "Voto sobre cierres de plantas (ad-hoc-news)", "url": "https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/vw-s-double-bind-index-expulsion-lands-as-boardroom-braces-for/70050060"}, {"title": "Cambios de índice desde el 21 de septiembre (it-boltwise)", "url": "https://www.it-boltwise.de/euro-stoxx-50-vw-und-wolters-kluwer-raus-engie-und-nokia-rein-indexumstellung-ab-21-september.html"}, {"title": "Pulso en el consejo por el plan de recortes (CNBC)", "url": "https://www.cnbc.com/2026/07/02/volkswagen-vw-job-cuts-germany-autos.html"}, {"title": "Resultados del primer semestre 2026 (Investing.com)", "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-volkswagen-group-posts-h1-2026-profit-miss-93CH-4810854"}]}, {"group": "NIKE (NKE)", "links": [{"title": "Mínimo de 12 años y China (Sporting Goods Intelligence)", "url": "https://www.sgieurope.com/financing/nike-stock-hits-12-year-low-after-q3-results/120425.article"}, {"title": "Octavo trimestre de caída en China (Startup Fortune)", "url": "https://startupfortune.com/nike-stock-hits-a-12-year-low-as-china-sales-keep-sliding/"}, {"title": "Aranceles, margen e inventario (TradingKey)", "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/261746593-nike-china-sales-tariffs-supply-chain-anta-dtc-inventory-tradingkey"}, {"title": "Fecha de resultados del Q1 FY27 (Business Wire)", "url": "https://www.businesswire.com/news/home/20260828161061/en/NIKE-Inc.-Announces-First-Quarter-Fiscal-2027-Earnings-and-Conference-Call"}, {"title": "Histórico de dividendos (StockAnalysis)", "url": "https://stockanalysis.com/stocks/nke/dividend/"}]}, {"group": "Campbell's (CPB)", "links": [{"title": "Resultados Q4 FY26 (The Campbell's Company)", "url": "https://www.thecampbellscompany.com/newsroom/press-releases/campbells-reports-fourth-quarter-fiscal-2026-results/"}, {"title": "Ventas, márgenes y dividendo (Investing.com)", "url": "https://www.investing.com/news/company-news/campbells-q4-fy26-slides-sales-miss-margins-shrink-dividend-cut-93CH-4887635"}, {"title": "Guía FY2027 (The Stock Observer)", "url": "https://www.thestockobserver.com/2026/09/03/campbells-nasdaqcpb-updates-fy-2027-earnings-guidance.html"}, {"title": "Recorte de dividendo y plan de 500 M$ (Proactive)", "url": "https://www.proactiveinvestors.com/companies/news/1098066/campbell-s-cuts-dividend-unveils-500m-cost-plan-after-profit-slide-1098066.html"}, {"title": "Short interest (Finviz)", "url": "https://finviz.com/quote.ashx?t=CPB&ty=si"}]}, {"group": "Sector alimentación envasada", "links": [{"title": "Perspectivas 2026 del sector (Baking Business)", "url": "https://www.bakingbusiness.com/articles/65680-food-industry-outlook-improves-little-for-2026"}, {"title": "Bernstein y los GLP-1 (Bloomberg)", "url": "https://www.bloomberg.com/news/articles/2026-06-05/bernstein-sours-on-packaged-food-stocks-as-inflation-glp-1-bite"}, {"title": "Kraft Heinz Q2 2026 y guía elevada (Business Wire)", "url": "https://www.businesswire.com/news/home/20260805074009/en/Kraft-Heinz-Reports-Second-Quarter-2026-Results-Updates-2026-Full-Year-Outlook"}]}, {"group": "Charter y sector cable (degradada)", "links": [{"title": "El valor más shorteado del S&P 500 (S3 Partners)", "url": "https://www.s3partners.com/articles/chtr-highest-debt-and-short-interest-squeeze"}, {"title": "Short interest y coste de préstamo (Fintel)", "url": "https://fintel.io/ss/us/chtr"}, {"title": "Cierre de la fusión con Cox (Yahoo Finance)", "url": "https://finance.yahoo.com/media-advertising/articles/charter-closes-34-5-billion-181437217.html"}, {"title": "New Street: el cable no crece antes de 2030 (Broadband Breakfast)", "url": "https://broadbandbreakfast.com/cable-unlikely-to-grow-subscribers-this-decade-new-street/"}]}, {"group": "Whirlpool y On Holding (degradadas)", "links": [{"title": "8-K con el recorte de guía (StockTitan)", "url": "https://www.stocktitan.net/sec-filings/WHR/8-k-whirlpool-corp-de-reports-material-event-452ca94fab25.html"}, {"title": "La acción sube 17,5 % tras el recorte (Simply Wall St)", "url": "https://simplywall.st/stocks/us/consumer-durables/nyse-whr/whirlpool/news/why-whirlpool-whr-is-up-175-after-cutting-2026-outlook-and-d"}, {"title": "Peor sesión de ONON desde su salida a bolsa (TradingView)", "url": "https://www.tradingview.com/news/stocktwits:f9ca57bb5094b:0-onon-stock-plunges-to-2-year-lows-in-record-single-day-crash-after-guidance-cut-revenue-miss/"}, {"title": "Estadísticas y short interest de ONON (StockAnalysis)", "url": "https://stockanalysis.com/stocks/onon/statistics/"}]}, {"group": "Centrus Energy (LEU)", "links": [{"title": "SEC 10-Q Q2 2026", "url": "https://www.sec.gov/Archives/edgar/data/0001065059/000162828026053863/leu-20260630.htm"}, {"title": "Cartera récord de 4.500 M$ (Yahoo Finance)", "url": "https://finance.yahoo.com/energy/articles/centrus-energy-corp-leu-q2-231855682.html"}, {"title": "Contrato con X-energy (Energies Media)", "url": "https://energiesmedia.com/centrus-xenergy-uranium-enrichment-energies/"}, {"title": "La era dorada de la energía nuclear (DOE)", "url": "https://www.energy.gov/articles/fact-sheet-golden-era-american-nuclear-energy-has-arrived"}, {"title": "Precio y capitalización (StockAnalysis)", "url": "https://stockanalysis.com/stocks/leu/"}]}, {"group": "SEALSQ (LAES)", "links": [{"title": "Ingresos preliminares H1 2026 (Investing.com)", "url": "https://www.investing.com/news/company-news/sealsq-reports-preliminary-h1-2026-revenue-of-11-million-93CH-4777388"}, {"title": "Resultados FY2025 y guía FY2026 (GlobeNewswire)", "url": "https://www.globenewswire.com/news-release/2026/03/31/3266003/0/en/sealsq-announces-fy-2025-audited-financial-results-reaffirms-q1-2026-expectations-fy-2026-guidance-updates-on-partnerships-and-qs7001-certification-go-to-market-execution.html"}, {"title": "Calendario de certificación QVault (TipRanks)", "url": "https://www.tipranks.com/news/company-announcements/sealsq-updates-post-quantum-chip-certification-schedule-targets-qvault-revenue-by-end-2026"}, {"title": "SEC 6-K", "url": "https://www.sec.gov/Archives/edgar/data/0001951222/000121390026076378/ea029728501ex99-1.htm"}, {"title": "Empresas de criptografía cuántica (The Quantum Insider)", "url": "https://thequantuminsider.com/2026/03/25/25-companies-building-the-quantum-cryptography-communications-markets/"}]}, {"group": "Ondas (ONDS)", "links": [{"title": "Resultados Q2 2026 (Ondas IR)", "url": "https://ir.ondas.com/press-releases/detail/326/ondas-posts-record-q2-2026-revenue-of-83-8-million-on"}, {"title": "8-K con guía elevada (StockTitan)", "url": "https://www.stocktitan.net/sec-filings/ONDS/8-k-ondas-inc-reports-material-event-e33f7c7c7ef0.html"}, {"title": "Pedido de Iron Drone Raider en Europa (Barchart)", "url": "https://www.barchart.com/story/news/32083158/ondas-secures-3-4-million-order-for-iron-drone-raider-counter-uas-system-from-renowned-european-defense-contractor-for-government-client"}, {"title": "Capitalización y acciones (CompaniesMarketCap)", "url": "https://companiesmarketcap.com/ondas-holdings/marketcap/"}, {"title": "Rentabilidad a 12 meses (Morningstar)", "url": "https://www.morningstar.com/stocks/xnas/onds/quote"}, {"title": "29.000 M$ de gasto en contra-UAS (Unmanned Airspace)", "url": "https://www.unmannedairspace.info/counter-uas-systems-and-policies/global-government-spending-on-c-uas-reaches-usd29-billion-in-first-months-of-2026/"}]}, {"group": "Longs evaluados y rechazados", "links": [{"title": "Evolution Metals: 452 M$ de pérdida semestral con 1,6 M$ de ingresos (StockTitan)", "url": "https://www.stocktitan.net/news/EMAT/evolution-metals-technologies-reports-second-quarter-2026-financial-bjnt0ue9s0cc.html"}, {"title": "Evolution Metals 8-K: expansión de capacidad de imanes (SEC)", "url": "https://www.sec.gov/Archives/edgar/data/0001866226/000121390026087062/ea030134701ex99-1.htm"}]}, {"group": "Vigilancia de posiciones", "links": [{"title": "D-Wave y la prudencia con el hype cuántico (Seeking Alpha)", "url": "https://seekingalpha.com/article/4926539-d-wave-quantum-tread-lightly-on-quantum-hype"}, {"title": "Sandisk: recorrido y perspectivas (Forbes)", "url": "https://www.forbes.com/sites/investor-hub/article/sandisk-stock-over-574-where-its-heading-2026/"}, {"title": "ASML advierte sobre sus objetivos de 2026 (iTiger)", "url": "https://www.itiger.com/news/1130044960"}, {"title": "McDonald's Q2 2026 (CNBC)", "url": "https://www.cnbc.com/2026/08/04/mcdonalds-mcd-q2-2026-earnings.html"}, {"title": "Pedido de misiles a 7 años de LMT (Options Trading Report)", "url": "https://www.optionstradingreport.com/2026/09/lockheed-martin-got-a-7-year-missile-order-the-stock-barely-blinked/"}]}]};
+(function(){
+  const R = window.REPORT || {};
+  const meta = R.meta || {};
+  const W = meta.weights || {deterioro:.4,sector:.2,squeeze:.2,rescatador:.15,coste:.05};
+  const KEYS = ["deterioro","sector","squeeze","rescatador","coste"];
+  const LABELS = meta.criteria_labels || {};
+  const COLORS = {deterioro:"var(--c1)",sector:"var(--c2)",squeeze:"var(--c3)",rescatador:"var(--c4)",coste:"var(--c5)"};
+  const B2 = meta.b2_labels || {};
+  const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const src = s => { if(!s) return ""; if(typeof s==="string") return `<span class="src">${esc(s)}</span>`; const t=s.title||s.url||""; return s.url?`<span class="src"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(t)}</a></span>`:`<span class="src">${esc(t)}</span>`; };
+  const fmtDate = iso => { if(!iso) return "sin fecha"; const d=new Date(iso+"T00:00:00"); if(isNaN(d)) return iso; return d.toLocaleDateString("es-ES",{day:"numeric",month:"short"}); };
+  const weekday = iso => { const d=new Date(iso+"T00:00:00"); return isNaN(d)?"":d.toLocaleDateString("es-ES",{weekday:"long"}); };
+  const bar = (c,w) => `<span class="bar" style="width:${w||170}px" title="${esc(Math.round(c.total||0))} / 100">${KEYS.map(k=>`<i style="width:${(c.contributions||{})[k]||0}%;background:${COLORS[k]}"></i>`).join("")}</span>`;
+
+  // header
+  const d = meta.date || "";
+  const wk = meta.week ? ` · Semana ${meta.week}` : "";
+  document.getElementById("eyebrow").textContent = `Escáner semanal${wk} · ${d}${meta.model?" · "+meta.model:""}`;
+  document.title = `Radar semanal ${d}`;
+  const S = R.summary || {};
+  document.getElementById("headline").textContent = S.headline || "";
+  const shorts = R.shorts || {candidates:[],selected:[]};
+  const longs = R.longs || [];
+  const cs = document.getElementById("chips-short");
+  cs.innerHTML = (shorts.selected||[]).map(s=>`<button class="chip" type="button" data-go="short-${esc(s.ticker)}"><span class="t">${esc(s.ticker)}</span><span class="n">${esc(s.name||"")}</span><span class="s">${Math.round(s.total||0)}</span></button>`).join("") || `<span class="chip empty">Sin shorts elegidos esta semana</span>`;
+  const cl = document.getElementById("chips-long");
+  cl.innerHTML = longs.map(l=>`<button class="chip long" type="button" data-go="long-${esc(l.ticker)}"><span class="t">${esc(l.ticker)}</span><span class="n">${esc(l.name||"")}</span><span class="s">${l.signals_met||0}/5</span></button>`).join("") || `<span class="chip empty">Ninguna cumplió 3 de 5 señales</span>`;
+  if(S.change_vs_previous){ const c=document.getElementById("change"); c.hidden=false; c.innerHTML=`<b>Frente a la semana anterior${meta.previous_report?" ("+esc(meta.previous_report)+")":""}:</b> ${esc(S.change_vs_previous)}`; }
+  document.getElementById("lines").innerHTML = (S.lines||[]).map(l=>`<li>${esc(l)}</li>`).join("");
+  document.getElementById("n-shorts").textContent = (shorts.candidates||[]).length;
+  document.getElementById("n-longs").textContent = longs.length;
+  document.getElementById("n-cal").textContent = (R.calendar||[]).length;
+
+  // score table
+  const tbody = document.querySelector("#score-table tbody");
+  let sortKey="total", sortDir=-1;
+  function rowVal(c,k){ if(k==="ticker") return c.ticker||""; if(k==="total") return c.total||0; if(k==="selected") return c.selected?1:0; if(k==="si") return parseFloat(String(c.short_interest||"").replace(/[^\d.,]/g,"").replace(",","."))||0; return (c.scores||{})[k]||0; }
+  function renderTable(){
+    const rows=[...(shorts.candidates||[])].sort((a,b)=>{const x=rowVal(a,sortKey),y=rowVal(b,sortKey); if(typeof x==="string") return sortDir*x.localeCompare(y); return sortDir*(x-y);});
+    tbody.innerHTML = rows.map(c=>{const sc=c.scores||{}; const sel=!!c.selected; return `<tr class="${sel?"sel ":""}${sel?"hit":""}" data-tk="${esc(c.ticker)}" data-go="${sel?"short-"+esc(c.ticker):""}">
+      <td><span class="tk">${esc(c.ticker)}</span><span class="nm">${esc(c.name||"")}${c.market?" · "+esc(c.market):""}</span></td>
+      ${KEYS.map(k=>`<td class="num">${esc(sc[k]??"–")}</td>`).join("")}
+      <td><span style="display:flex;align-items:center;gap:10px">${bar(c,140)}<span class="mono" style="font-size:13px">${Math.round(c.total||0)}</span></span></td>
+      <td class="mono" style="font-size:12.5px;white-space:nowrap">${esc(c.short_interest||"sin dato")}${c.days_to_cover?`<span class="nm">${esc(c.days_to_cover)} d. cubrir</span>`:""}</td>
+      <td>${sel?`<span class="state sel">Elegida</span>`:`<span class="state out">Descartada</span>${c.discard_reason?`<span class="reason">${esc(c.discard_reason)}</span>`:""}`}</td>
+    </tr>`;}).join("");
+  }
+  renderTable();
+  document.querySelectorAll("#score-table th").forEach(th=>{th.addEventListener("click",()=>{const k=th.dataset.k; if(sortKey===k) sortDir*=-1; else {sortKey=k; sortDir=(k==="ticker")?1:-1;} document.querySelectorAll("#score-table th").forEach(t=>t.removeAttribute("aria-sort")); th.setAttribute("aria-sort",sortDir<0?"descending":"ascending"); renderTable();});});
+  document.getElementById("legend").innerHTML = KEYS.map(k=>`<span><i style="background:${COLORS[k]}"></i>${esc(LABELS[k]||k)} <span class="w">${Math.round(W[k]*100)} %</span></span>`).join("");
+
+  // short fichas
+  document.getElementById("fichas-short").innerHTML = (shorts.selected||[]).map(s=>`<article class="ficha" id="short-${esc(s.ticker)}" data-tk="${esc(s.ticker)}">
+    <div class="ficha-head">
+      <div class="tk">${esc(s.ticker)}</div>
+      <div class="meta"><b>${esc(s.name||"")}</b>${s.market?" · "+esc(s.market):""}${s.price?` · ${esc(s.price)}`:""}${s.price_date?` <span class="mono" style="color:var(--muted)">(${esc(s.price_date)})</span>`:""}${s.short_interest?`<br>Short interest ${esc(s.short_interest)}${s.days_to_cover?", "+esc(s.days_to_cover)+" días para cubrir":""}`:""}</div>
+      <div class="score"><div class="big">${Math.round(s.total||0)}<small>/ 100</small></div>${bar(s,150)}</div>
+    </div>
+    <div class="ficha-body">
+      <div class="col">
+        <div class="eyebrow">Señales</div>
+        <ul class="signals">${(s.signals||[]).map(g=>`<li><span>${esc(g.text)}${src(g.source)}</span>${g.value?`<span class="v">${esc(g.value)}</span>`:""}</li>`).join("")}</ul>
+        ${s.sector_news&&s.sector_news.text?`<div class="eyebrow">Confirmación sectorial</div><blockquote class="quote">${esc(s.sector_news.text)}${src(s.sector_news.source)}</blockquote>`:""}
+      </div>
+      <div class="col">
+        <div class="eyebrow">Riesgos del short</div>
+        <ul class="risks">${(s.risks||[]).map(r=>`<li>${esc(r)}</li>`).join("")}</ul>
+        <div class="eyebrow">Próximo catalizador</div>
+        <div class="cat"><span class="d">${esc(fmtDate((s.catalyst||{}).date))}</span><span>${esc((s.catalyst||{}).text||"sin dato")}</span></div>
+      </div>
+    </div>
+    <div class="verdict"><b>Veredicto.</b> ${esc(s.verdict||"")}</div>
+  </article>`).join("");
+
+  // longs
+  const lg = document.getElementById("longs");
+  lg.innerHTML = longs.length ? longs.map(l=>{const sig=l.signals||{}; const met=l.signals_met||0; return `<article class="ficha long" id="long-${esc(l.ticker)}" data-tk="${esc(l.ticker)}">
+    <div class="ficha-head" style="grid-template-columns:auto 1fr">
+      <div class="tk">${esc(l.ticker)}</div>
+      <div class="meta"><b>${esc(l.name||"")}</b>${l.market?" · "+esc(l.market):""}${l.market_cap?` · ${esc(l.market_cap)}`:""}<br><span class="trend">${esc(l.trend||"")}</span></div>
+    </div>
+    <div class="col">
+      <div class="dots" style="margin-bottom:14px">${[0,1,2,3,4].map(i=>`<i class="${i<met?"on":""}"></i>`).join("")}<span class="lbl">${met} de 5 señales</span></div>
+      <ul class="checks">${Object.keys(B2).map(k=>`<li class="${sig[k]?"on":""}">${esc(B2[k])}</li>`).join("")}</ul>
+      ${(l.signal_notes||[]).length?`<ul class="notes">${l.signal_notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`:""}
+    </div>
+    <div class="col" style="border-top:1px solid var(--line)">
+      <dl class="kv">
+        <dt>Por qué ahora</dt><dd>${esc(l.why_now||"")}</dd>
+        <dt>Tesis</dt><dd>${esc(l.thesis||"")}</dd>
+        <dt>La invalida</dt><dd>${esc(l.kill_criteria||"")}</dd>
+        <dt>Horizonte</dt><dd>${esc(l.horizon||"")}</dd>
+        <dt>Catalizador</dt><dd><span class="mono" style="font-size:12.5px;color:var(--ink-2)">${esc(fmtDate((l.next_catalyst||{}).date))}</span> · ${esc((l.next_catalyst||{}).text||"sin dato")}</dd>
+        ${(l.sources||[]).length?`<dt>Fuentes</dt><dd>${l.sources.map(s=>src(s)).join(" ")}</dd>`:""}
+      </dl>
+    </div>
+  </article>`;}).join("") : `<div class="empty-state">Ninguna candidata cumplió al menos tres de las cinco señales esta semana. Es un resultado válido: mejor ninguna que una forzada.</div>`;
+
+  // watchlist
+  document.getElementById("watch").innerHTML = (R.watchlist||[]).map(w=>{const news=!!(w.note&&w.status!=="none"); return `<div class="watch-row ${news?"news":"quiet"}" data-tk="${esc(w.ticker)}"><span class="tk">${esc(w.ticker)}</span><span class="nm">${esc(w.name||"")}</span><span class="note">${esc(w.note||"sin novedades relevantes")}${news&&w.source?src(w.source):""}</span></div>`;}).join("");
+
+  // calendar
+  const cal = [...(R.calendar||[])].sort((a,b)=>(a.date||"").localeCompare(b.date||""));
+  const byDay = {}; cal.forEach(e=>{(byDay[e.date||"sin fecha"]=byDay[e.date||"sin fecha"]||[]).push(e);});
+  const today = new Date(); const soon = iso=>{const t=new Date(iso+"T00:00:00"); return !isNaN(t)&&(t-today)/864e5<7;};
+  document.getElementById("calendar").innerHTML = Object.keys(byDay).map(day=>`<div class="day ${soon(day)?"soon":""}"><div class="d">${esc(fmtDate(day))}<small>${esc(weekday(day))}</small></div><div class="evs">${byDay[day].map(e=>`<div class="ev ${esc(e.side||"other")}" data-tk="${esc(e.ticker||"")}"><span class="tk">${esc(e.ticker||"—")}</span><span>${esc(e.text||"")}</span></div>`).join("")}</div></div>`).join("") || `<div class="empty-state">Sin catalizadores registrados.</div>`;
+
+  // sources
+  document.getElementById("sources").innerHTML = (R.sources||[]).map(g=>`<div class="src-group"><h3>${esc(g.group||"")}</h3><ul>${(g.links||[]).map(l=>`<li>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.title||l.url)}</a>`:esc(l.title||"")}</li>`).join("")}</ul></div>`).join("");
+
+  // footer
+  document.getElementById("meta").textContent = `Generado ${meta.generated_at||""}${meta.model?" con "+meta.model:""}. Datos públicos con fecha de corte ${d}.`;
+  document.getElementById("legal").textContent = meta.legal || "Investigación con datos públicos. No es asesoramiento financiero. Los CFD son productos apalancados; entre el 74 % y el 89 % de las cuentas minoristas pierden dinero.";
+
+  // tabs
+  const tabs=[...document.querySelectorAll(".tab")];
+  function show(name){ tabs.forEach(t=>t.setAttribute("aria-selected",t.dataset.panel===name?"true":"false")); document.querySelectorAll(".panel").forEach(p=>p.hidden=(p.id!=="panel-"+name)); try{localStorage.setItem("radar-tab",name);}catch(e){} }
+  tabs.forEach(t=>t.addEventListener("click",()=>show(t.dataset.panel)));
+  let initial="shorts"; try{initial=localStorage.getItem("radar-tab")||"shorts";}catch(e){} if(!document.getElementById("panel-"+initial)) initial="shorts"; show(initial);
+
+  // chips & rows navigate to fichas
+  document.addEventListener("click",e=>{const el=e.target.closest("[data-go]"); if(!el||!el.dataset.go) return; const id=el.dataset.go; show(id.startsWith("long-")?"longs":"shorts"); const target=document.getElementById(id); if(target){target.scrollIntoView({behavior:"smooth",block:"start"});}});
+
+  // search
+  const search=document.getElementById("search");
+  search.addEventListener("input",()=>{const q=search.value.trim().toUpperCase(); document.querySelectorAll("[data-tk]").forEach(el=>{const tk=(el.dataset.tk||"").toUpperCase(); const nm=(el.textContent||"").toUpperCase(); el.classList.toggle("hidden-by-search",!!q&&!(tk.includes(q)||nm.includes(q)));});});
+
+  // theme
+  const root=document.documentElement; const btn=document.getElementById("theme");
+  try{const saved=localStorage.getItem("radar-theme"); if(saved) root.setAttribute("data-theme",saved);}catch(e){}
+  btn.addEventListener("click",()=>{const cur=root.getAttribute("data-theme"); const dark=cur?cur==="dark":matchMedia("(prefers-color-scheme: dark)").matches; const next=dark?"light":"dark"; root.setAttribute("data-theme",next); try{localStorage.setItem("radar-theme",next);}catch(e){}});
+})();
+</script>
