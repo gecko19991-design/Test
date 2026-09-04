@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "date": "2026-09-04",
+    "week": 36,
+    "model": "claude-fable-5-1",
+    "previous_report": null,
+    "legal": "Ejemplo de formato construido con los datos públicos del informe base de septiembre de 2026. No es asesoramiento financiero. Los CFD son productos apalancados; entre el 74 % y el 89 % de las cuentas minoristas pierden dinero."
+  },
+  "summary": {
+    "headline": "Volkswagen, Charter y Whirlpool ofrecen la mejor relación entre deterioro verificable y riesgo de corto; Lucid tiene la tesis más fuerte pero el peor perfil de short.",
+    "change_vs_previous": "Primer informe; no hay semana anterior con la que comparar.",
+    "lines": [
+      "Lucid queda descartada como short de bajo riesgo: PIF controla el 58 %, hay rumores de exclusión de bolsa y el short interest ronda el 31 % del float.",
+      "Volkswagen sale del Euro Stoxx 50 en septiembre: ventas forzadas de fondos indexados sobre una empresa con China en -31,6 %.",
+      "Longs incipientes de ejemplo: fabricantes de equipos de red eléctrica con carteras de pedidos récord por la demanda de centros de datos."
+    ]
+  },
+  "shorts": {
+    "candidates": [
+      {"ticker": "VOW3", "name": "Volkswagen", "market": "XETRA", "price": "sin dato", "scores": {"deterioro": 4, "sector": 4, "squeeze": 5, "rescatador": 5, "coste": 3}, "selected": true, "short_interest": "sin dato", "days_to_cover": null},
+      {"ticker": "CHTR", "name": "Charter Communications", "market": "NASDAQ", "price": "sin dato", "scores": {"deterioro": 4, "sector": 4, "squeeze": 3, "rescatador": 5, "coste": 4}, "selected": true, "short_interest": "verificar (screen > 20 %)", "days_to_cover": null},
+      {"ticker": "WHR", "name": "Whirlpool", "market": "NYSE", "price": "38,16 $", "scores": {"deterioro": 4, "sector": 4, "squeeze": 1, "rescatador": 5, "coste": 5}, "selected": true, "short_interest": "> 20 % float", "days_to_cover": null},
+      {"ticker": "LCID", "name": "Lucid Group", "market": "NASDAQ", "price": "5,50 $", "scores": {"deterioro": 5, "sector": 5, "squeeze": 1, "rescatador": 1, "coste": 2}, "selected": false, "discard_reason": "PIF 58 %, riesgo de take-private, SI ~31 %", "short_interest": "~31 % float", "days_to_cover": 2.8},
+      {"ticker": "PSNY", "name": "Polestar", "market": "NASDAQ", "price": "sin dato", "scores": {"deterioro": 5, "sector": 5, "squeeze": 2, "rescatador": 1, "coste": 1}, "selected": false, "discard_reason": "Geely rescata cada trimestre; préstamo caro", "short_interest": "sin dato", "days_to_cover": null},
+      {"ticker": "RUN", "name": "Sunrun", "market": "NASDAQ", "price": "sin dato", "scores": {"deterioro": 4, "sector": 5, "squeeze": 1, "rescatador": 5, "coste": 3}, "selected": false, "discard_reason": "SI 29 % del float, 6,6 días para cubrir", "short_interest": "29 % float", "days_to_cover": 6.6},
+      {"ticker": "UAA", "name": "Under Armour", "market": "NYSE", "price": "sin dato", "scores": {"deterioro": 4, "sector": 3, "squeeze": 1, "rescatador": 5, "coste": 4}, "selected": false, "discard_reason": "SI récord 30-35 % del float", "short_interest": "30-35 % float", "days_to_cover": null},
+      {"ticker": "PUM", "name": "Puma", "market": "XETRA", "price": "sin dato", "scores": {"deterioro": 5, "sector": 3, "squeeze": 3, "rescatador": 1, "coste": 5}, "selected": false, "discard_reason": "Anta con el 29 %; OPA obligatoria al 30 %", "short_interest": "sin dato", "days_to_cover": null}
+    ],
+    "selected": [
+      {
+        "ticker": "VOW3", "name": "Volkswagen", "market": "XETRA", "price": "sin dato", "price_date": "2026-09-04", "short_interest": "sin dato",
+        "signals": [
+          {"text": "Beneficio operativo del primer semestre, margen 3,8 %", "value": "-11,6 %", "source": {"title": "Investing.com", "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-volkswagen-group-posts-h1-2026-profit-miss-93CH-4810854"}},
+          {"text": "Guía de ingresos 2026 rebajada", "value": "-3 %", "source": {"title": "Invezz", "url": "https://invezz.com/news/2026/07/24/volkswagen-reports-weaker-than-expected-q2-earnings-lowers-2026-sales-forecast/"}},
+          {"text": "Entregas en China en el primer semestre", "value": "-31,6 %", "source": {"title": "TechTimes", "url": "https://www.techtimes.com/articles/326345/20260902/volkswagens-28-year-euro-stoxx-50-tenure-ends-nokia-returns-ai-infrastructure-revenue.htm"}},
+          {"text": "Sale del Euro Stoxx 50 tras 28 años; la sustituye Nokia", "value": "sep 2026", "source": {"title": "TechTimes", "url": "https://www.techtimes.com/articles/326345/20260902/volkswagens-28-year-euro-stoxx-50-tenure-ends-nokia-returns-ai-infrastructure-revenue.htm"}},
+          {"text": "El CEO admite que los recortes planificados no bastan; hasta 100.000 empleos en riesgo", "value": "", "source": {"title": "CNBC", "url": "https://www.cnbc.com/2026/04/30/volkswagen-q1-earnings-autos.html"}}
+        ],
+        "sector_news": {"text": "Los fabricantes europeos pierden China a doble dígito mientras cargan con la reestructuración de la apuesta eléctrica; los que ya pasaron el peor trimestre (Stellantis, Porsche) rebotan, VW sigue en fase de reconocimiento.", "source": {"title": "CNBC", "url": "https://www.cnbc.com/2026/02/26/stellantis-earnings-full-year-2025-autos-evs.html"}},
+        "risks": ["Balance sólido: liquidez neta de 32.000-34.000 M€, no es una apuesta de quiebra", "Dividendo vigente: el corto lo paga", "Acuerdos arancelarios o estímulos en China pueden provocar rebotes"],
+        "catalyst": {"date": "2026-10-30", "text": "Resultados del tercer trimestre; antes, ventas forzadas por el rebalanceo del Euro Stoxx 50"},
+        "verdict": "Mejor perfil riesgo/tesis de la lista: float enorme, sin OPA posible y con un flujo vendedor conocido por el rebalanceo del índice."
+      },
+      {
+        "ticker": "CHTR", "name": "Charter Communications", "market": "NASDAQ", "price": "sin dato", "price_date": "2026-09-04", "short_interest": "verificar en el broker",
+        "signals": [
+          {"text": "Clientes de banda ancha perdidos en Q2, frente a 116.000 un año antes", "value": "-172.000", "source": {"title": "Yahoo Finance", "url": "https://finance.yahoo.com/markets/stocks/articles/charter-warns-broadband-competition-remains-150058014.html"}},
+          {"text": "Ingresos del segundo trimestre", "value": "-1,7 %", "source": {"title": "Quartz", "url": "https://qz.com/charter-revenue-decline-broadband-subscribers-q2-2026-072426"}},
+          {"text": "Guía de EBITDA 2026 rebajada", "value": "-1 %", "source": {"title": "BigGo Finance", "url": "https://finance.biggo.com/news/US_CHTR_2026-07-24"}},
+          {"text": "Apalancamiento 4,18x EBITDA; Cox añade ~12.000 M$ de deuda", "value": "4,2x", "source": {"title": "StockTitan", "url": "https://www.stocktitan.net/sec-filings/CHTR/8-k-charter-communications-inc-mo-reports-material-event-e2a6a9e81df3.html"}}
+        ],
+        "sector_news": {"text": "La pérdida de clientes de cable se acelera por la fibra y el fixed wireless; el CEO reconoce que la estrategia de retención fue demasiado agresiva.", "source": {"title": "BigGo Finance", "url": "https://finance.biggo.com/news/US_CHTR_2026-07-24"}},
+        "risks": ["Aparece en un screen de short interest > 20 %: verificar antes de operar", "Recompras históricas agresivas", "Cambio de nombre a Cox Communications en 12 meses: comprobar tratamiento del broker"],
+        "catalyst": {"date": "2026-10-23", "text": "Resultados del tercer trimestre, primero con Cox consolidada"},
+        "verdict": "Deterioro estructural con integración de Cox como fuente de ruido negativo durante trimestres; el único punto a confirmar es el short interest real."
+      },
+      {
+        "ticker": "WHR", "name": "Whirlpool", "market": "NYSE", "price": "38,16 $", "price_date": "2026-09-01", "short_interest": "> 20 % del float",
+        "signals": [
+          {"text": "Guía de BPA 2026: de ~6,23 $ a 2,50-3,00 $", "value": "-55 %", "source": {"title": "Investing.com", "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-whirlpool-misses-q2-2026-estimates-but-shares-rise-93CH-4834496"}},
+          {"text": "BPA ajustado del Q2 frente a +0,08 $ esperado", "value": "-0,21 $", "source": {"title": "Investing.com", "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-whirlpool-misses-q2-2026-estimates-but-shares-rise-93CH-4834496"}},
+          {"text": "Dividendo suspendido por primera vez en 70 años", "value": "0 $", "source": {"title": "Yahoo Finance", "url": "https://finance.yahoo.com/markets/stocks/articles/whirlpool-q1-earnings-miss-cuts-123916210.html"}},
+          {"text": "Flujo de caja libre del primer trimestre", "value": "-896 M$", "source": {"title": "Motley Fool", "url": "https://www.fool.com/investing/2026/05/11/whirlpool-stock-is-down-20-and-the-outlook-for-202/"}},
+          {"text": "Cotiza por debajo del mínimo de 52 semanas de mayo (38,38 $)", "value": "38,16 $", "source": {"title": "Investing.com", "url": "https://www.investing.com/equities/whirl-pool-corp"}}
+        ],
+        "sector_news": {"text": "Vivienda estancada y aranceles de equivalente acero (300 M$ de impacto) mantienen la demanda de electrodomésticos débil en Norteamérica.", "source": {"title": "FinancialContent", "url": "https://www.financialcontent.com/article/marketminute-2026-1-30-whirlpool-shares-plunge-10-as-housing-stagnation-and-tariffs-squeeze-2026-outlook"}},
+        "risks": ["Short interest de dos dígitos: riesgo de squeeze en resultados", "Subidas de precio del 10 % + 4 % en Norteamérica pueden mejorar márgenes en Q3", "Ya ha caído un 15 % desde los resultados"],
+        "catalyst": {"date": "2026-10-28", "text": "Resultados del tercer trimestre"},
+        "verdict": "Tesis clara y sin coste de dividendo, pero el short interest alto la deja en tercera posición."
+      }
+    ]
+  },
+  "longs": [
+    {
+      "ticker": "EROC", "name": "ERock", "market": "NYSE", "market_cap": "sin dato", "trend": "Red eléctrica y energía para centros de datos",
+      "why_now": "La demanda de potencia de la IA está llenando las carteras de pedidos de los fabricantes de generación flexible y equipos de red.",
+      "signals": {"small_cap": true, "growth": true, "catalyst": true, "moat": false, "balance": false},
+      "signal_notes": ["Cartera contratada récord de 1.700 M$, unas 10 veces la de hace un año (Q2 2026)", "La acción subió más del 20 % tras el informe de agosto: vigilar que no supere el umbral de +200 % en 12 meses"],
+      "thesis": "Si la cartera se convierte en ingresos con margen, el mercado aún no lo paga.",
+      "kill_criteria": "Cancelaciones de contratos de centros de datos o necesidad de ampliar capital para ejecutar la cartera.",
+      "horizon": "6-18 meses",
+      "next_catalyst": {"date": "2026-11-05", "text": "Resultados del tercer trimestre: conversión de cartera a ingresos"},
+      "sources": [{"title": "Investing.com", "url": "https://www.investing.com/news/company-news/erock-q2-2026-slides-ai-power-demand-drives-record-backlog-93CH-4855296"}]
+    },
+    {
+      "ticker": "FORG", "name": "Forgent Power Solutions", "market": "sin dato", "market_cap": "sin dato", "trend": "Equipos de red y transformadores",
+      "why_now": "Cartera de pedidos de 1.980 M$, +157 % interanual y +33 % trimestral, en un sector con escasez estructural de transformadores.",
+      "signals": {"small_cap": true, "growth": true, "catalyst": true, "moat": false, "balance": false},
+      "signal_notes": ["Ejemplo de formato: ticker, capitalización y balance pendientes de verificar en el próximo informe"],
+      "thesis": "La escasez de transformadores y equipos de red da visibilidad de ingresos a varios años.",
+      "kill_criteria": "Márgenes que no acompañen al volumen o retrasos de entrega por cadena de suministro.",
+      "horizon": "3-5 años",
+      "next_catalyst": {"date": "2026-11-12", "text": "Resultados trimestrales y actualización de cartera"},
+      "sources": [{"title": "SEC 8-K", "url": "https://www.sec.gov/Archives/edgar/data/0002080126/000208012626000017/exhibit991earningsrelease_.htm"}]
+    }
+  ],
+  "watchlist": [
+    {"ticker": "QBTS", "name": "D-Wave Quantum", "status": "none", "note": ""},
+    {"ticker": "SNDK", "name": "Sandisk", "status": "none", "note": ""},
+    {"ticker": "ASML", "name": "ASML", "status": "news", "note": "Perspectivas decepcionantes en julio arrastraron al sector tecnológico europeo; revisar guía de pedidos en el Q3.", "source": {"title": "iTiger", "url": "https://www.itiger.com/news/1100997560"}},
+    {"ticker": "MCD", "name": "McDonald's", "status": "none", "note": ""},
+    {"ticker": "LMT", "name": "Lockheed Martin", "status": "none", "note": ""}
+  ],
+  "calendar": [
+    {"date": "2026-09-08", "ticker": "VOW3", "side": "short", "text": "Ventas forzadas por la salida del Euro Stoxx 50 (rebalanceo de septiembre)"},
+    {"date": "2026-09-15", "ticker": "CHTR", "side": "short", "text": "Lanzamiento de la oferta Spectrum en los mercados de Cox"},
+    {"date": "2026-10-02", "ticker": "LCID", "side": "other", "text": "Producción y entregas del tercer trimestre, guiadas a la baja"},
+    {"date": "2026-10-23", "ticker": "CHTR", "side": "short", "text": "Resultados Q3"},
+    {"date": "2026-10-28", "ticker": "WHR", "side": "short", "text": "Resultados Q3"},
+    {"date": "2026-10-30", "ticker": "VOW3", "side": "short", "text": "Resultados Q3"},
+    {"date": "2026-11-05", "ticker": "EROC", "side": "long", "text": "Resultados Q3"}
+  ],
+  "sources": [
+    {"group": "Volkswagen", "links": [{"title": "H1 2026 profit miss (Investing.com)", "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-volkswagen-group-posts-h1-2026-profit-miss-93CH-4810854"}, {"title": "Sale del Euro Stoxx 50 (TechTimes)", "url": "https://www.techtimes.com/articles/326345/20260902/volkswagens-28-year-euro-stoxx-50-tenure-ends-nokia-returns-ai-infrastructure-revenue.htm"}]},
+    {"group": "Charter", "links": [{"title": "Pierde 172.000 clientes (Yahoo Finance)", "url": "https://finance.yahoo.com/markets/stocks/articles/charter-warns-broadband-competition-remains-150058014.html"}, {"title": "Cierre de Cox (Variety)", "url": "https://variety.com/2026/tv/news/charter-closes-cox-merger-new-company-name-1236838902/"}]},
+    {"group": "Whirlpool", "links": [{"title": "Q2 2026 (Investing.com)", "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-whirlpool-misses-q2-2026-estimates-but-shares-rise-93CH-4834496"}, {"title": "Recorte de guía y dividendo (Yahoo Finance)", "url": "https://finance.yahoo.com/markets/stocks/articles/whirlpool-q1-earnings-miss-cuts-123916210.html"}]},
+    {"group": "Lucid", "links": [{"title": "Q2 2026 call (Motley Fool)", "url": "https://www.fool.com/earnings/call-transcripts/2026/08/11/lucid-lcid-q2-2026-earnings-call-transcript/"}, {"title": "Short interest (MarketBeat)", "url": "https://www.marketbeat.com/stocks/NASDAQ/LCID/short-interest/"}]},
+    {"group": "Longs", "links": [{"title": "ERock Q2 2026 (Investing.com)", "url": "https://www.investing.com/news/company-news/erock-q2-2026-slides-ai-power-demand-drives-record-backlog-93CH-4855296"}, {"title": "Forgent Power 8-K (SEC)", "url": "https://www.sec.gov/Archives/edgar/data/0002080126/000208012626000017/exhibit991earningsrelease_.htm"}]}
+  ]
+}

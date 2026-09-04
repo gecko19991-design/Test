@@ -81,26 +81,28 @@ Para D-Wave (QBTS), Sandisk (SNDK), ASML, McDonald's (MCD) y Lockheed Martin (LM
 
 ---
 
-## Parte D: formato del informe
+## Parte D: formato del informe (JSON + HTML interactivo)
 
-Nombre del archivo: `research/weekly-scan/reports/YYYY-MM-DD.md` (fecha de ejecución).
+El informe se escribe primero como datos estructurados y después se construye el HTML interactivo y el Markdown con el script del repositorio. No se escribe HTML a mano.
 
-Estructura obligatoria:
-1. Resumen en 5 líneas (3 shorts, longs, cambio principal frente a la semana anterior).
-2. Tabla de shorts con puntuación.
-3. Fichas de los 3 shorts (A4).
-4. Fichas de longs incipientes (B4).
-5. Vigilancia de posiciones (C).
-6. Calendario de catalizadores de las próximas 2 semanas.
-7. Fuentes (enlaces agrupados por empresa).
-8. Aviso legal en una línea.
-
-Extensión objetivo: 150-250 líneas. Más no aporta; menos suele significar que faltan fuentes.
+1. Copiar `research/weekly-scan/template/report.example.json` como `research/weekly-scan/reports/YYYY-MM-DD.json` (fecha de ejecución) y rellenarlo entero con los datos de la semana. El ejemplo es el contrato: mismas claves, mismos tipos. Reglas de contenido:
+   - `meta.date`, `meta.week`, `meta.model`, `meta.previous_report` (fecha del informe anterior o `null`).
+   - `summary.headline` (una frase), `summary.change_vs_previous`, `summary.lines` (3-5 frases).
+   - `shorts.candidates`: mínimo 6, cada una con `scores` de 1 a 5 en los cinco criterios, `selected` (exactamente 3 en `true`), `discard_reason` para las no elegidas, `short_interest` y `days_to_cover` (o `"sin dato"` / `null`).
+   - `shorts.selected`: las 3 fichas completas (3-5 `signals` con `value` y `source`, `sector_news`, `risks`, `catalyst` con fecha ISO, `verdict`).
+   - `longs`: 2-4 fichas con `signals` (5 booleanos de B2), `signal_notes`, `why_now`, `thesis`, `kill_criteria`, `horizon`, `next_catalyst`, `sources`. Si ninguna cumple 3 de 5, dejar `[]`.
+   - `watchlist`: las 5 posiciones; `status` `"news"` solo cuando hay novedad, con `note` y `source`.
+   - `calendar`: eventos de las próximas 2 semanas con `side` `short` / `long` / `other`; comprobar que la fecha cae en día hábil.
+   - `sources`: enlaces agrupados por empresa.
+   - Todo el texto en español; las cifras con formato español (coma decimal, punto de miles).
+2. Ejecutar `python3 research/weekly-scan/build_report.py research/weekly-scan/reports/YYYY-MM-DD.json`. Genera `YYYY-MM-DD.html` (informe interactivo), `YYYY-MM-DD.md` (versión legible en GitHub) y actualiza `reports/index.html` (archivo de todos los informes). Si el script falla, corregir el JSON, no el script.
+3. Abrir el HTML generado y comprobar que las tres fichas, los longs y el calendario se ven; corregir el JSON si algo falta.
 
 ---
 
 ## Parte E: entrega
 1. Crear o actualizar la rama `research/weekly-scan`: si ya existe en remoto, partir de ella; si no, partir de `claude/cfd-short-research-ogxhpm` (que contiene esta metodología y el informe inicial de septiembre de 2026).
-2. Añadir el informe, hacer commit con mensaje `Weekly scan YYYY-MM-DD: <3 tickers short> / <tickers long>` y push con `git push -u origin research/weekly-scan`.
-3. Si existe rama por defecto en el repo, abrir o actualizar un PR en borrador contra ella titulado `Weekly short/long scan YYYY-MM-DD`. Si ya hay un PR abierto de esa rama, no crear otro.
-4. Terminar con un resumen de 10 líneas en el chat: los tickers, la puntuación y el enlace al archivo.
+2. Añadir el JSON, el HTML, el Markdown y `reports/index.html`; commit con mensaje `Weekly scan YYYY-MM-DD: <3 tickers short> / <tickers long>` y `git push -u origin research/weekly-scan`.
+3. Si la herramienta Artifact está disponible en la sesión, publicar `reports/YYYY-MM-DD.html` como artefacto (título `Radar semanal YYYY-MM-DD`, favicon 📡) y anotar el enlace en el resumen final. Es la forma más cómoda de leerlo desde el móvil.
+4. Si existe rama por defecto en el repo, abrir o actualizar un PR en borrador contra ella titulado `Weekly short/long scan YYYY-MM-DD`. Si ya hay un PR abierto de esa rama, no crear otro.
+5. Terminar con un resumen de 10 líneas en el chat: los tickers, la puntuación, el enlace al artefacto (si lo hay) y la ruta del archivo.

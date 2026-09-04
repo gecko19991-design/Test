@@ -1,0 +1,39 @@
+<title>Radar Semanal · Archivo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{color-scheme:light;--paper:#f6f7f9;--surface:#fff;--ink:#171b22;--ink-2:#4d5666;--muted:#7c8595;--line:#dfe3ea;--accent:#1c5cab;--short:#c8393a;--long:#0b7f5a;--short-soft:#fbeeed;--long-soft:#e6f6ef}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--paper:#121519;--surface:#1a1f27;--ink:#edf0f4;--ink-2:#b4bcc8;--muted:#7f8896;--line:#2b323d;--accent:#6da7ec;--short:#ee7a7a;--long:#3fcf99;--short-soft:#33201f;--long-soft:#16302a}}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#121519;--surface:#1a1f27;--ink:#edf0f4;--ink-2:#b4bcc8;--muted:#7f8896;--line:#2b323d;--accent:#6da7ec;--short:#ee7a7a;--long:#3fcf99;--short-soft:#33201f;--long-soft:#16302a}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.55}
+.wrap{max-width:880px;margin:0 auto;padding:40px 24px 60px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+h1{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:40px;margin:0 0 6px;line-height:1.1}
+.sub{color:var(--ink-2);margin:0 0 28px;max-width:62ch}
+.list{display:grid;gap:12px}
+.item{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:8px;align-items:baseline}
+.item:first-child{border-color:var(--accent)}
+.item .d{font-family:"IBM Plex Mono",monospace;font-size:13.5px}
+.item .d small{display:block;color:var(--muted);font-size:11px;margin-top:3px;letter-spacing:.06em;text-transform:uppercase}
+.item a.t{font-family:"Newsreader",Georgia,serif;font-size:19px;color:var(--ink);text-decoration:none}
+.item a.t:hover{color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:12px;padding:2px 7px;border-radius:4px;background:var(--short-soft);color:var(--short)}
+.tag.long{background:var(--long-soft);color:var(--long)}
+.empty{color:var(--ink-2);font-family:"Newsreader",Georgia,serif;font-size:18px;padding:26px;border:1px dashed var(--line);border-radius:8px}
+@media (max-width:560px){.item{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+  <div class="eyebrow">Escáner semanal · archivo</div>
+  <h1>Radar semanal</h1>
+  <p class="sub">Un informe por semana: tres shorts con mejor relación deterioro / riesgo en CFD y los longs incipientes ligados a tendencias mundiales. El más reciente va primero.</p>
+  <div class="list" id="list"></div>
+</div>
+<script>
+/*__DATA__*/
+(function(){
+  const R=window.REPORT||{reports:[]};
+  const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const el=document.getElementById("list");
+  el.innerHTML=R.reports.length?R.reports.map((r,i)=>`<div class="item"><div class="d">${esc(r.date)}${i===0?"<small>más reciente</small>":""}</div><div><a class="t" href="${esc(r.file)}">${esc(r.headline||"Informe semanal")}</a><div class="tags">${(r.shorts||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}${(r.longs||[]).map(t=>`<span class="tag long">${esc(t)}</span>`).join("")}</div></div></div>`).join(""):`<div class="empty">Todavía no hay informes.</div>`;
+})();
+</script>
