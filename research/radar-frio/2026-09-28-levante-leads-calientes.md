@@ -36,8 +36,8 @@ trabajos están en marcha en Els Alamús. Ese lead debe subir de "futuro" a "cal
 Hay tres ventanas, no una:
 
 - **Fase 1** — 35 M€, 35.000 pallets, 40 muelles. Operativa desde la primera quincena
-  de abril de 2026 (se adelantó sobre la previsión de mayo). → Ventana de
-  **mantenimiento y servicio 24/7**, no de capex. Instalación recién estrenada:
+  de abril de **2025** (se adelantó sobre la previsión de mayo). → Ventana de
+  **mantenimiento y servicio 24/7**, no de capex. Lleva año y medio operando:
   momento óptimo para contrato de mantenimiento antes de que lo cierre el instalador.
 - **Fase 2** — 35 M€, +60 muelles, +45.000 pallets, cierre previsto **julio 2026**.
   → Verificar recepción y posibles ajustes/puesta a punto.
@@ -66,7 +66,9 @@ planteamiento inicial. A fecha de este barrido sigue sin adjudicatario público 
 
 ### Por qué está caliente
 Es la única nave frigorífica de nueva planta en licitación viva en todo el arco
-mediterráneo. Está diseñada para exportadores/importadores de fruta, hortaliza y
+mediterráneo. Escala real: **3.000 m² de suelo reservado, ampliables a 5.000 m²**
+— una cámara portuaria mediana, no una macroplataforma. El proyecto se llama
+PORTALI-FRIO y exige alta eficiencia, renovables, automatización y trazabilidad. Está diseñada para exportadores/importadores de fruta, hortaliza y
 congelado de la provincia. Un procedimiento negociado es **mejor** que un concurso
 abierto para nosotros: hay menos licitadores y se puede influir en el pliego técnico.
 
@@ -189,3 +191,57 @@ Andalucía, no vía prensa.
 3. **Primafrío Vilanova de la Barca** — retrofit de 1.500 m². Cierre rápido, abre el grupo.
 4. **Listado OPFH de la CARM** — pedir beneficiarias 2026 con inversión en frío.
 5. **Federaciones de cooperativas valencianas** — canal para los 28,5 M€.
+
+---
+
+## 10. Anexo — Verificación en profundidad de ESP, Jumilla y Alicante (28/09/2026)
+
+Segunda pasada sobre los tres leads priorizados. Correcciones y datos de contacto.
+
+### Correcciones a este mismo informe
+- **ESP Solutions Fase 1 abrió en abril de 2025, no de 2026.** Cronología verificada:
+  anuncio dic-2023 → primera piedra 11/03/2024 → Fase 1 abr-2025 → Fase 2 jul-2026 →
+  Fase 3 Q4-2027. Confirmado en Murcia Plaza, CdeComunicación y Ruta del Transporte.
+- **Puerto de Alicante: 3.000 m² ampliables a 5.000 m².** El informe original daba a
+  entender una instalación mucho mayor.
+
+### ESP Solutions
+- Matriz: **A.T. La Espada, S.L.** — Avda. de España 14, 30562 Ceutí (Murcia).
+  Tel. 968 687 776 · info@espsolutions.es · espsolutions.eu
+- Filial de frío: **ESP Fresh Logistics, S.L.**, CIF B05543624, Totana.
+- Presidente **Pedro Campillo** (fundador); CEO **David Moreno** desde julio de 2024,
+  con todas las funciones ejecutivas.
+- Capital: Blantyre Capital. Inmobiliario: Brookfield + Logistik Service (JV
+  Almandine Numancia, marzo 2022). Proyecto de ARAS Arquitectos+Ingenieros.
+- Instalación ya en **CO₂** con fotovoltaica de autoconsumo (-930 t CO₂/año).
+  No vender tecnología: vender Fase 3 y servicio.
+- **Puerta de entrada: Logistik Service**, promotor del llave en mano.
+
+### Campos de Jumilla
+- Coop. Hortofrutícola Campos de Jumilla, S. Coop. Ltda. NIF **F30099667**. Fundada
+  1986. 101 empleados. 12.500 t/campaña. Camino del Castillo s/n, 30520 Jumilla.
+  Tel. **968 780 114** · info@camposdejumilla.com
+- Proyecto: **7 cámaras de atmósfera controlada, 1.400 t**, para alargar 5-6 meses la
+  conservación de la pera Ercolini (DOP Pera de Jumilla).
+- **Pendiente de resolver: si la nave ya está construida.** En abril de 2026
+  inauguraron un centro logístico nuevo y las fuentes no separan ambas cosas.
+- El programa operativo OPFH se planifica por ejercicios → la ventana real puede ser
+  la memoria de 2027, que se cierra meses antes.
+
+### Puerto de Alicante
+- Autoridad Portuaria de Alicante, Muelle de Poniente 11, 03001 Alicante.
+  Tel. **965 130 095**. Presidente: Luis Gonzaga Rodríguez González.
+- Proyecto **PORTALI-FRIO**. Usos: hortofrutícola, pesca y farmacéutico.
+- Vía de entrada preferente: el **Departamento de Dominio Público** y la consulta
+  preliminar al mercado, no la licitación.
+- **Dato sin cerrar: el año de la CPM** (plazo 6 de noviembre). Lo más probable es que
+  fuera previa al concurso de enero (nov-2025, ya cerrada). No darla por viva.
+
+### Nota de método
+Datos marcados como confirmados = dos o más fuentes independientes coincidentes. Sin
+confirmar: presidencia de Campos de Jumilla, continuidad de Javier Muniesa en Logistik
+Service, año de la CPM de Alicante, e identidad de la empresa del negociado.
+
+La política de red del entorno bloquea puertoalicante.com, camposdejumilla.com y
+murcia.com, además de segre.com y logisticaprofesional.com, así que no se han podido
+leer las webs oficiales. Todo procede de buscador y medios secundarios.
